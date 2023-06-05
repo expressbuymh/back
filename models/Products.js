@@ -11,9 +11,9 @@ const schema = new Schema({
         active: { type: Boolean, required: true },
         percent: { type: Number }
     },
-    category_id: { type: Types.objectId, ref: 'categories', required: true },
-    subCategory_id: { type: Types.objectId, ref: 'subCategories', required: true },
-    departaments_id: { type: Types.objectId, ref: 'departaments', required: true }
+    category_id: { type: Types.ObjectId, ref: 'categories', required: true },
+    subCategory_id: { type: Types.ObjectId, ref: 'subCategories', required: true },
+    departaments_id: { type: Types.ObjectId, ref: 'departaments', required: true }
 })
 const collection = 'products'
 const Product = model(collection, schema)

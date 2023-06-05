@@ -15,11 +15,11 @@ const schema = new Schema({
   is_verified: { type: Boolean, required: true },
   verify_code: { type: String, required: true },
   photo: { type: String, required: true },
-  stock_id: {
+  /* stock_id: {
     type: Types.ObjectId,
     ref: 'stocks',
     required: true
-  }
+  } */
 }, {
   timestamps: true
 })

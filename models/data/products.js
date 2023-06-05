@@ -8,9 +8,9 @@ export const products = [
     ean13: '3502110009357',
     category_id: 'Drinks',
     stocks: 1,
-    departament_id: 'Market',
+    deparment_id: 'Market',
     discount: { active: false, percent: 1 },
-    subcategory_id: 'Soda'
+    subCategory_id: 'Soda'
   }, {
     name: 'Coca-Cola - 1,25 L ',
     price: '3900',
@@ -20,9 +20,9 @@ export const products = [
     ean13: ' 5449000267412',
     category_id: 'Drinks',
     stocks: 1,
-    departament_id: 'Market',
+    deparment_id: 'Market',
     discount: { active: false, percent: 1 },
-    subcategory_id: 'Soda'
+    subCategory_id: 'Soda'
   }, {
     name: 'Coca-cola - 330 mL',
     price: '1500',
@@ -32,9 +32,9 @@ export const products = [
     ean: ' 5449000214911',
     category_id: 'Drinks',
     stocks: 1,
-    departament_id: 'Market',
+    deparment_id: 'Market',
     discount: { active: false, percent: 1 },
-    subcategory_id: 'Soda'
+    subCategory_id: 'Soda'
   }, {
     name: 'SCHWEPPES - 1,5 L',
     price: '4200',
@@ -44,9 +44,9 @@ export const products = [
     ean13: '3124480184801',
     category_id: 'Drinks',
     stocks: 1,
-    departament_id: 'Market',
+    deparment_id: 'Market',
     discount: { active: false, percent: 1 },
-    subcategory_id: 'Soda'
+    subCategory_id: 'Soda'
   }, {
     name: 'SPRITE - 1,5 L',
     price: '4200',
@@ -56,9 +56,9 @@ export const products = [
     ean13: '5449000012203',
     category_id: 'Drinks',
     stocks: 1,
-    departament_id: 'Market',
+    deparment_id: 'Market',
     discount: { active: false, percent: 1 },
-    subcategory_id: 'Soda'
+    subCategory_id: 'Soda'
   }, {
     name: 'SPRITE Sin Azucar - 1,5 L',
     price: '',
@@ -68,9 +68,9 @@ export const products = [
     ean13: '',
     category_id: 'Drinks',
     stocks: 1,
-    departament_id: 'Market',
+    deparment_id: 'Market',
     discount: { active: false, percent: 1 },
-    subcategory_id: 'Soda'
+    subCategory_id: 'Soda'
   }, {
     name: 'JUGO NARANJA LIGHT GFA COUNTRY HILL - 3,2 L',
     price: '39000',
@@ -80,9 +80,9 @@ export const products = [
     ean13: '5808993',
     category_id: 'Drinks',
     stocks: 1,
-    departament_id: 'Market',
+    deparment_id: 'Market',
     discount: { active: false, percent: 1 },
-    subcategory_id: 'Juices'
+    subCategory_id: 'Juices'
   }, {
     name: 'DEL VALLE - 2,5 L',
     price: '5800',
@@ -92,9 +92,9 @@ export const products = [
     ean13: '7411001802075',
     category_id: 'Drinks',
     stocks: 1,
-    departament_id: 'Market',
+    deparment_id: 'Market',
     discount: { active: false, percent: 1 },
-    subcategory_id: 'Juices'
+    subCategory_id: 'Juices'
   }, {
     name: 'Tetrapak HIT - 1 L',
     price: '3700',
@@ -104,9 +104,9 @@ export const products = [
     ean13: '7702090052312',
     category_id: 'Drinks',
     stocks: 1,
-    departament_id: 'Market',
+    deparment_id: 'Market',
     discount: { active: false, percent: 1 },
-    subcategory_id: 'Juices'
+    subCategory_id: 'Juices'
   }, {
     name: 'TE NEGRO LIMON FUZE 400 ml',
     price: '2400',
@@ -116,9 +116,9 @@ export const products = [
     ean13: '7702535016688',
     category_id: 'Drinks',
     stocks: 1,
-    departament_id: 'Market',
+    deparment_id: 'Market',
     discount: { active: false, percent: 1 },
-    subcategory_id: 'Ice tea'
+    subCategory_id: 'Ice tea'
   }, {
     name: 'TE NEGRO DURAZNO FUZE 400 ml',
     price: '2400',
@@ -128,9 +128,9 @@ export const products = [
     ean13: '7501055358649',
     category_id: 'Drinks',
     stocks: 1,
-    departament_id: 'Market',
+    deparment_id: 'Market',
     discount: { active: false, percent: 1 },
-    subcategory_id: 'Ice tea'
+    subCategory_id: 'Ice tea'
   }, {
     name: 'Sal Refinada REFISAL 1000 gr',
     price: '2100',
@@ -140,9 +140,9 @@ export const products = [
     ean13: '7703812101202',
     category_id: 'Food pantry',
     stocks: 1,
-    departament_id: 'Market',
+    deparment_id: 'Market',
     discount: { active: false, percent: 1 },
-    subcategory_id: 'Grain'
+    subCategory_id: 'Grain'
   }, {
     name: 'Arroz Premium DIANA 2500 gr',
     price: '18000',
@@ -152,9 +152,9 @@ export const products = [
     ean13: '7702511000014',
     category_id: 'Food pantry',
     stocks: 1,
-    departament_id: 'Market',
+    deparment_id: 'Market',
     discount: { active: false, percent: 1 },
-    subcategory_id: 'Grain'
+    subCategory_id: 'Grain'
   }, {
     name: 'Lenteja FRESCAMPO 1000 gr',
     price: '5900',
@@ -164,9 +164,9 @@ export const products = [
     ean13: '763615745086',
     category_id: 'Food pantry',
     stocks: 1,
-    departament_id: 'Market',
+    deparment_id: 'Market',
     discount: { active: false, percent: 1 },
-    subcategory_id: 'Grain'
+    subCategory_id: 'Grain'
   }, {
     name: 'Frijol Bola Roja FRESCAMPO 500 gr',
     price: '',
@@ -176,9 +176,9 @@ export const products = [
     ean13: ' 7701001736006',
     category_id: 'Food pantry',
     stocks: 1,
-    departament_id: 'Market',
+    deparment_id: 'Market',
     discount: { active: false, percent: 1 },
-    subcategory_id: 'Grain'
+    subCategory_id: 'Grain'
   }, {
     name: 'Aceite Vegetal FRESCAMPO 3000 ml',
     price: '21000',
@@ -188,9 +188,9 @@ export const products = [
     ean13: '763615745086',
     category_id: 'Food pantry',
     stocks: 1,
-    departament_id: 'Market',
+    deparment_id: 'Market',
     discount: { active: false, percent: 1 },
-    subcategory_id: 'Oils and vinegars'
+    subCategory_id: 'Oils and vinegars'
   }, {
     name: 'Aceite de Oliva Extra Virgen FRESCAMPO 500 ml',
     price: '13400',
@@ -200,9 +200,9 @@ export const products = [
     ean13: '7701001775739',
     category_id: 'Food pantry',
     stocks: 1,
-    departament_id: 'Market',
+    deparment_id: 'Market',
     discount: { active: false, percent: 1 },
-    subcategory_id: 'Oils and vinegars'
+    subCategory_id: 'Oils and vinegars'
   }, {
     name: 'Vinagre Blanco Especial COLMANS 500 ml',
     price: '4060',
@@ -212,9 +212,9 @@ export const products = [
     ean13: '8714100536209',
     category_id: 'Food pantry',
     stocks: 1,
-    departament_id: 'Market',
+    deparment_id: 'Market',
     discount: { active: false, percent: 1 },
-    subcategory_id: 'Oils and vinegars'
+    subCategory_id: 'Oils and vinegars'
   }, {
     name: 'Aceite de girasol premier  2 L',
     price: '',
@@ -224,8 +224,8 @@ export const products = [
     ean13: '7701018007250',
     category_id: 'Food pantry',
     stocks: 1,
-    departament_id: 'Market',
+    deparment_id: 'Market',
     discount: { active: false, percent: 1 },
-    subcategory_id: 'Oils and vinegars'
+    subCategory_id: 'Oils and vinegars'
   }
 ]

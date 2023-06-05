@@ -6,7 +6,7 @@ const schema = new Schema({
     ref: '',
     requiered: true
   }, */
-  Name: {
+  name: {
     type: String,
     required: true
   }

@@ -1,14 +1,14 @@
 import mongoose from 'mongoose'
 
 const schema = new mongoose.Schema({
-  name: { type: String, required: true },
-  _id: {
-    type: mongoose.Types.ObjectId,
-    ref: 'departaments',
-    required: true
-  }
+    name: { type: String, required: true },
+    deparment_id: {
+        type: mongoose.Types.ObjectId,
+        ref: 'departaments',
+        required: true
+    }
 }, {
-  timestamps: true
+    timestamps: true
 })
 const collection = 'categories'
 
