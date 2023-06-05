@@ -1,6 +1,6 @@
-import { Schema, model, Types } from "mongoose";
+import { Schema, model, Types } from 'mongoose'
 
-let schema = new Schema({
+const schema = new Schema({
     title: { type: String, required: true },
     price: { type: Number, required: true },
     description: { type: String, required: true },
@@ -10,8 +10,11 @@ let schema = new Schema({
     disccount: {
         active: { type: Boolean, required: true },
         percent: { type: Number }
-    }
+    },
+    category_id: { type: Types.objectId, ref: 'categories', required: true },
+    subCategory_id: { type: Types.objectId, ref: 'subCategories', required: true },
+    departaments_id: { type: Types.objectId, ref: 'departaments', required: true }
 })
-let collection = 'products'
-let Product = model(collection, schema)
-export default Product  
+const collection = 'products'
+const Product = model(collection, schema)
+export default Product
