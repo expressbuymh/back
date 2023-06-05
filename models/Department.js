@@ -12,7 +12,7 @@ const schema = new Schema({
   }
 })
 
-const collection = 'departaments'
+const collection = 'departments'
 
-const Departament = model(collection, schema)
-export default Departament
+const Department = model(collection, schema)
+export default Department

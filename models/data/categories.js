@@ -1,10 +1,10 @@
 export const categories = [
   {
-    deparment_id: 'Market',
+    department_id: 'Market',
     name: 'Food pantry'
   },
   {
-    deparment_id: 'Market',
+    department_id: 'Market',
     name: 'Drinks'
   }
   /* {

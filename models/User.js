@@ -1,4 +1,4 @@
-import { Schema, model, Types } from 'mongoose'
+import { Schema, model } from 'mongoose'
 
 const schema = new Schema({
   email: { type: String, required: true },
@@ -14,7 +14,7 @@ const schema = new Schema({
   is_online: { type: Boolean, required: true },
   is_verified: { type: Boolean, required: true },
   verify_code: { type: String, required: true },
-  photo: { type: String, required: true },
+  photo: { type: String, required: true }
   /* stock_id: {
     type: Types.ObjectId,
     ref: 'stocks',
