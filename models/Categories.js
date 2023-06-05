@@ -1,16 +1,16 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
 
-let schema = new mongoose.Schema({
-    name: { type: String, required: true },
-    _id: {
-        type: mongoose.Types.ObjectId,
-        ref: 'users',
-        required: true
-    }
-},{
-    timestamps: true
+const schema = new mongoose.Schema({
+  name: { type: String, required: true },
+  _id: {
+    type: mongoose.Types.ObjectId,
+    ref: 'departaments',
+    required: true
+  }
+}, {
+  timestamps: true
 })
-let collection = 'categories'
+const collection = 'categories'
 
-let Category = mongoose.model(collection,schema)
+const Category = mongoose.model(collection, schema)
 export default Category

@@ -1,18 +1,18 @@
-import { Schema, model, Types } from 'mongoose'
+import { Schema, model } from 'mongoose'
 
 const schema = new Schema({
-  _id: {
+  /*  _id: {
     type: Types.ObjectId,
     ref: '',
     requiered: true
-  },
+  }, */
   Name: {
     type: String,
     required: true
   }
 })
 
-const collection = 'departament'
+const collection = 'departaments'
 
 const Departament = model(collection, schema)
 export default Departament
