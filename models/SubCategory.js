@@ -3,7 +3,7 @@ import { Schema, model, Types } from 'mongoose'
 const schema = new Schema({
   _id: {
     type: Types.ObjectId,
-    ref: '',
+    ref: 'categories',
     requiered: true
   },
   Name: {
