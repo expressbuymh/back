@@ -6,13 +6,13 @@ const schema = new Schema({
     ref: '',
     requiered: true
   }, */
-  Name: {
+  name: {
     type: String,
     required: true
   }
 })
 
-const collection = 'departaments'
+const collection = 'departments'
 
-const Departament = model(collection, schema)
-export default Departament
+const Department = model(collection, schema)
+export default Department

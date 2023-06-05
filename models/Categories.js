@@ -2,9 +2,9 @@ import mongoose from 'mongoose'
 
 const schema = new mongoose.Schema({
   name: { type: String, required: true },
-  _id: {
+  department_id: {
     type: mongoose.Types.ObjectId,
-    ref: 'departaments',
+    ref: 'departments',
     required: true
   }
 }, {
