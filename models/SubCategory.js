@@ -1,12 +1,12 @@
 import { Schema, model, Types } from 'mongoose'
 
 const schema = new Schema({
-  _id: {
+  category_id: {
     type: Types.ObjectId,
     ref: 'categories',
     requiered: true
   },
-  Name: {
+  name: {
     type: String,
     required: true
   }
@@ -15,4 +15,4 @@ const schema = new Schema({
 const collection = 'subCategories'
 
 const SubCategory = model(collection, schema)
-export default SubCategory
+export default SubCategory/*  */
