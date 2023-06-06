@@ -18,17 +18,25 @@ export const subCategories =
 {
   category_id: 'Food pantry',
   name: 'Oils and vinegars'
-}/* ,
-{
-  name: ''
 },
 {
-  name: ''
+  category_id: 'Vegetables and Fruits',
+  name: 'Frozen vegetables'
 },
 {
-  name: ''
+  category_id: 'Vegetables and Fruits',
+  name: 'Vegetables'
 },
 {
-  name: ''
-} */
+  category_id: 'Vegetables and Fruits',
+  name: 'Fruits'
+},
+{
+  category_id: 'Meats and Fish',
+  name: 'Meats'
+} ,
+{
+  category_id: 'Meats and Fish',
+  name: 'Fish'
+}
 ]
