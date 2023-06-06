@@ -1,17 +1,17 @@
-import SubCategory from '../../models/SubCategory.js';
+import SubCategory from '../../models/SubCategory.js'
 
-let create = async (req, res, next) => {
-    try {
-        let new_Subcategory = await SubCategory(req.body)
-        await new_Subcategory.save()
-        return res.status(201).json({
-            succes: true,
-            message: 'SubCategory Created!'
-        })
-    } catch (error) {
-        return res.status(400).json({
-            error: error
-        })
-    }
+const create = async (req, res, next) => {
+  try {
+    const newSubcategory = await SubCategory(req.body)
+    await newSubcategory.save()
+    return res.status(201).json({
+      succes: true,
+      message: 'SubCategory Created!'
+    })
+  } catch (error) {
+    return res.status(400).json({
+      error
+    })
+  }
 }
 export default create
