@@ -2,26 +2,24 @@ import Invoice from '../../models/Invoice.js'
 import User from '../../models/User.js'
 import nodemailer from 'nodemailer'
 
-
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: process.env.EMAIL,
-        pass: process.env.EMAIL_PASS,
-    }
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL,
+    pass: process.env.EMAIL_PASS
+  }
 })
 
-let create = async (req, res, next) => {
-
-    let name = 'facu'
-    let email = 'cartolanofacundo@gmail.com' //Estos datos son para el email//
-    try {
-        await Invoice.create(req.body);
-        const mailOptions = {
-            from: 'expressbuymh@gmail.com',
-            to: email,
-            subject: 'Hello, we have successfully received your payment, thank you very much for your purchase.',
-            html: `
+const create = async (req, res, next) => {
+  const name = 'facu'
+  const email = 'cartolanofacundo@gmail.com' // Estos datos son para el email//
+  try {
+    await Invoice.create(req.body)
+    const mailOptions = {
+      from: 'expressbuymh@gmail.com',
+      to: email,
+      subject: 'Hello, we have successfully received your payment, thank you very much for your purchase.',
+      html: `
             <html>
 <head>
     <title></title>
@@ -95,24 +93,21 @@ let create = async (req, res, next) => {
 
 </html>
             `
-        }
-        transporter.sendMail(mailOptions, function (error, info) {
-            if (error) {
-                console.log(error)
-            } else {
-                console.log("send email:", info.response)
-            }
-        })
-        return res.status(201).json({
-            success: true,
-            message: "Invoice Created!"
-        })
-    } catch (error) {
-        console.log(error);
     }
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error)
+      } else {
+        console.log('send email:', info.response)
+      }
+    })
+    return res.status(201).json({
+      success: true,
+      message: 'Invoice Created!'
+    })
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 export default create
-
-
-
