@@ -6,29 +6,32 @@ export const categories = [
   {
     department_id: 'Market',
     name: 'Drinks'
-  }
-  /* {
+  },
+  {
+    department_id: 'Market',
     name: 'Vegetables and Fruits'
   },
   {
-    name: 'Meats'
-  },
-  {
-    name: 'Dairy'
-  },
-  {
-    name: 'Products hygiene'
-  },
-  {
-    name: 'Products cleaning'
-  },
-  {
-    name: 'Bakery'
-  },
-  {
-    name: 'Candies'
-  },
-  {
-    name: 'Snacks'
-  } */
+    department_id: 'Market',
+    name: 'Meats and Fish'
+  }
+
+  // {
+  //   name: 'Dairy'
+  // },
+  // {
+  //   name: 'Products hygiene'
+  // },
+  // {
+  //   name: 'Products cleaning'
+  // },
+  // {
+  //   name: 'Bakery'
+  // },
+  // {
+  //   name: 'Candies'
+  // },
+  // {
+  //   name: 'Snacks'
+  // } 
 ]
