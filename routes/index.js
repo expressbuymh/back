@@ -11,12 +11,10 @@ router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' })
 })
 
-
 router.use('/auth', userRouter)
 router.use('/products', productsRouter)
 router.use('/invoices', invoicesRouter)
 router.use('/categories', categoriesRouter)
 router.use('/subcategories', subcategoriesRouter)
-
 
 export default router
