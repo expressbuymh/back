@@ -10,7 +10,6 @@ import cors from 'cors'
 import { __dirname } from './utils.js'
 
 import indexRouter from './routes/index.js'
-import usersRouter from './routes/users.js'
 
 const app = express()
 
@@ -25,8 +24,8 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
+// router
 app.use('/', indexRouter)
-app.use('/users', usersRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
