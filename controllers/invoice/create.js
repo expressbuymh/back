@@ -15,11 +15,8 @@ let create = async (req, res, next) => {
 
     let name = 'facu'
     let email = 'cartolanofacundo@gmail.com' //Estos datos son para el email//
-    let bill = await Invoice(req.body)
-    await bill.save()
-
     try {
-        await User.create(req.body);
+        await Invoice.create(req.body);
         const mailOptions = {
             from: 'expressbuymh@gmail.com',
             to: email,
@@ -108,7 +105,7 @@ let create = async (req, res, next) => {
         })
         return res.status(201).json({
             success: true,
-            message: "The user was created"
+            message: "Invoice Created!"
         })
     } catch (error) {
         console.log(error);
