@@ -11,6 +11,7 @@ const schema = new mongoose.Schema({
       ref: 'address',
       required: true
     }, */
+  // Lista de productos, con cantidad 
   status_order: { type: String, required: true },
   products: [{ type: String, required: true }],
   number_of_order: { type: String, required: true }
