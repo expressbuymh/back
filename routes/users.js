@@ -32,3 +32,4 @@ router.post('/signout', passport.authenticate('jwt', { session: false }), signOu
 router.post('/token', passport.authenticate('jwt', { session: false }), token)
 
 export default router
+
