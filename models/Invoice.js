@@ -7,9 +7,9 @@ const schema = new Schema({
   total_price: { type: Number, required: true },
   photo_company: { type: String, required: true },
   mode_pay: { type: String, required: true },
-  cuit: { type: Number }
+  cuit: { type: Number, required: true }
 })
 
 const collection = 'invoices'
-const Invoice = model(schema, collection)
+const Invoice = model(collection, schema)
 export default Invoice
