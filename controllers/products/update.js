@@ -6,12 +6,12 @@ const update = async (req, res, next) => {
       req.params.id, req.body, { new: true })
     if (updateProduct) {
       return res.status(200).json({
-        succes: true,
+        success: true,
         updateProduct
       })
     } else {
       return res.status(404).json({
-        succes: false,
+        success: false,
         message: [{
           path: 'exists',
           message: "The products doesn't exists"
@@ -20,7 +20,7 @@ const update = async (req, res, next) => {
     }
   } catch (error) {
     return res.status(500).json({
-      succes: false,
+      success: false,
       message: [{
         path: 'internal',
         message: 'Internal server error'

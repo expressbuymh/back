@@ -10,10 +10,10 @@ const update = async (req, res, next) => {
         categoryUpdate
       })
     } else {
-      return res.status(404).json({
+      return res.status(400).json({
         succes: false,
         message: [{
-          path: 'exists',
+          path: 'categories',
           message: "The Category doesn't exists"
         }]
       })
@@ -22,8 +22,8 @@ const update = async (req, res, next) => {
     return res.status(500).json({
       succes: false,
       message: [{
-        path: 'internal',
-        message: 'Internal server error'
+        path: 'server',
+        message: 'Error internal the server'
       }]
     })
   }

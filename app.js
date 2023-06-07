@@ -8,14 +8,20 @@ import cookieParser from 'cookie-parser'
 import logger from 'morgan'
 import cors from 'cors'
 import { __dirname } from './utils.js'
-
+import mercadopago from 'mercadopago'
 import indexRouter from './routes/index.js'
 
 const app = express()
 
+
+mercadopago.configure({ access_token: process.env.ACCESS_TOKEN })
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
+app.use((req, res, next) => {
+  console.log("Petición solicitada!!")
+  next()
+})
 
 app.use(cors())
 app.use(logger('dev'))
