@@ -12,9 +12,6 @@ import {schema} from '../schema/categories.js'
 const router = Router()
 
 router.post('/',passport.authenticate('jwt', { session: false }),validator(schema), create)
-
-const router = Router()
-
 router.get('/', read)
 router.put('/:id',passport.authenticate('jwt', { session: false }), update)
 router.delete('/:id',passport.authenticate('jwt', { session: false }), destroy)
