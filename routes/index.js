@@ -7,6 +7,9 @@ import subcategoriesRouter from './subcategories.js'
 import departmentRouter from './departments.js'
 import orderRouter from './orders.js'
 import addressRouter from './address.js'
+
+
+
 const router = express.Router()
 
 /* GET home page. */
@@ -22,6 +25,9 @@ router.use('/subcategories', subcategoriesRouter)
 router.use('/departments', departmentRouter)
 router.use('/orders', orderRouter)
 router.use('/address', addressRouter )
+
+
+
 
 
 export default router
