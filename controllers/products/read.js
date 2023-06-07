@@ -8,7 +8,10 @@ const read = async (req, res, next) => {
     })
   } catch (error) {
     return res.status(400).json({
-      error
+      message: [{
+        path: 'products',
+        message: "No existing Products"
+      }]
     })
   }
 }

@@ -9,8 +9,11 @@ const create = async (req, res, next) => {
       message: 'Category Created!'
     })
   } catch (error) {
-    return res.status(400).json({
-      error
+    return res.status(500).json({
+      message: [{
+        path: 'server',
+        message: "Error internal the server"
+      }]
     })
   }
 }

@@ -8,7 +8,12 @@ const read = async (req, res, next) => {
       allSubcategories
     })
   } catch (error) {
-    next()
+    return res.status(400).json({
+      message: [{
+        path: 'categories',
+        message: "No existing Subcategories"
+      }]
+    })
   }
 }
 export default read
