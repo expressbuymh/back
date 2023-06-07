@@ -1,24 +1,33 @@
-import mongoose from 'mongoose'
+import { Schema, model, Types } from 'mongoose'
 
-const schema = new mongoose.Schema({
+const schema = new Schema({
   user_id: {
-    type: mongoose.Types.ObjectId,
+    type: Types.ObjectId,
     ref: 'users',
     required: true
   },
-  /*  address_id: {
-      type: mongoose.Types.ObjectId,
-      ref: 'address',
+    address_id: {
+      type: Types.ObjectId,
+      ref: 'addresses',
       required: true
-    }, */
-  // Lista de productos, con cantidad 
+    }, 
   status_order: { type: String, required: true },
-  products: [{ type: String, required: true }],
+  Products: [{
+    _id: {
+      type: Types.ObjectId,
+      ref: 'products',
+      requiered: true
+    },
+    cant: {
+      type: Number,
+      requiered: true
+    }
+  }],
   number_of_order: { type: String, required: true }
 }, {
   timestamps: true
 })
 const collection = 'orders'
 
-const Order = mongoose.model(collection, schema)
+const Order = model(collection, schema)
 export default Order
