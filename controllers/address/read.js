@@ -1,20 +1,19 @@
-import Order from '../../models/Orders.js'
+import Address from "../../models/address.js";
 
 const read = async (req, res) => {
   try {
-
-    
-    const seeOrders = await Order.findOne({_id: req.params.id})
-    
-   if(seeOrders){
+    const addressId = await Address.find({user_id: req.params.id})
+    console.log(addressId);
+  if(addressId){
         return res.status(200).json({
-            seeOrders
+            success: true,
+            data: addressId,
         })
     } else {
         return res.status(404).json({
           message: [{
             path: 'exists',
-            message: "The order doesn't exists"
+            message: "The address doesn't exists"
           }]
         })
       }
