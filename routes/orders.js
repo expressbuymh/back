@@ -1,5 +1,4 @@
 import { Router } from 'express'
-const router = Router()
 import my_orders from '../controllers/orders/my_orders.js'
 import getOrders from '../controllers/orders/getAll.js'
 import update from '../controllers/orders/updateStatus.js'
