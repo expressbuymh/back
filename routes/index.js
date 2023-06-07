@@ -5,9 +5,9 @@ import invoicesRouter from './invoice.js'
 import categoriesRouter from './categories.js'
 import subcategoriesRouter from './subcategories.js'
 import departmentRouter from './departments.js'
+import stocksRouter from './stocks.js'
 import orderRouter from './orders.js'
 import addressRouter from './address.js'
-
 
 
 const router = express.Router()
@@ -24,10 +24,7 @@ router.use('/categories', categoriesRouter)
 router.use('/subcategories', subcategoriesRouter)
 router.use('/departments', departmentRouter)
 router.use('/orders', orderRouter)
+router.use('/stocks', stocksRouter)
 router.use('/address', addressRouter )
-
-
-
-
 
 export default router

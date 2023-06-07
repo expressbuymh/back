@@ -8,10 +8,14 @@ import validator from '../middleware/users/validator.js'
 import { newProduct } from '../schema/newProducts.js'
 import passport from 'passport'
 import existsProduct from '../middleware/products/exists.js'
+import productsFilter from '../controllers/products/products_filter.js'
+
 const router = Router()
 
 router.post('/', passport.authenticate('jwt', { session: false }), validator(newProduct), existsProduct, create)
-router.get('/', read)
+//Remplazo de read por productsFilter (es un read, pero con filtros aplicables)
+//router.get('/', read)
+router.get('/', productsFilter)
 router.get('/stock/:id', ProductStock)
 router.delete('/:id', destroy)
 router.put('/:id', passport.authenticate('jwt', { session: false }), update)
