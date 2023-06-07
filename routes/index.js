@@ -6,6 +6,8 @@ import categoriesRouter from './categories.js'
 import subcategoriesRouter from './subcategories.js'
 import departmentRouter from './departments.js'
 import orderRouter from './orders.js'
+
+
 const router = express.Router()
 
 /* GET home page. */
