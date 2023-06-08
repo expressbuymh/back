@@ -1,3 +1,4 @@
+import clearProduct from '../controllers/carts/clearProduct.js'
 import Cart from '../models/Cart.js'
 
 const cartServices = {
@@ -122,6 +123,28 @@ const cartServices = {
                 message: [{
                     path: 'clearcart',
                     message: 'There was an error while clear the cart'
+                }]
+            }
+        }
+    },
+    checkout_product: async function (cart_id) {
+        try {
+            let checkout = await Cart.findById(cart_id)
+            if (checkout) {
+                this.clear_product(cart_id)
+            }
+            return {
+                success: true,
+                status_code: 200,
+                checkout
+            }
+        } catch (error) {
+            return {
+                success: false,
+                status_code: 500,
+                message: [{
+                    path: 'checkoutcart',
+                    message: 'There was an error while checkout the cart'
                 }]
             }
         }
