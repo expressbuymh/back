@@ -1,18 +1,20 @@
-import User from '../../models/User.js'
-import jwt from 'jsonwebtoken'
 import usersServices from '../../services/user.service.js'
 
 const signIn = async (req, res, next) => {
   try {
-    const user = usersServices.sign_in(req.body.email)
-    
+    const user = await usersServices.sign_in(req.body.email)
     return res.status(200).json({
       success: true,
-      token,
       user
     })
   } catch (error) {
-    next(error)
+    return res.status(500).json({
+      success: false,
+      message: [{
+        path: 'Error',
+        message: 'Internal server error'
+      }]
+    })
   }
 }
 

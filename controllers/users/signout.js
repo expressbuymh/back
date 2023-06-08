@@ -1,15 +1,21 @@
-import User from '../../models/User.js'
+import usersServices from '../../services/user.service.js'
+
 const signOut = async (req, res, next) => {
   const { email } = req.user
   try {
-    await User.findOneAndUpdate(
-      { email },
-      { is_online: false },
-      { new: true }
-    )
-    return res.status(200).send('offline user!')
+    await usersServices.sign_out(email)
+    return res.status(200).json({
+      success: true,
+      message: 'Logout successful'
+    })
   } catch (error) {
-    next(error)
+    return res.status(500).json({
+      success: false,
+      message: [{
+        path: 'Error',
+        message: 'Internal server error'
+      }]
+    })
   }
 }
 

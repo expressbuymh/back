@@ -31,6 +31,9 @@
     "nodemon": "^2.0.22",
     "standard": "^17.1.0"
   },
+  "eslintConfig": {
+    "extends":["./node_modules/standard/eslintrc.json"]
+  },
   "main": "app.js",
   "bin": {
     "prueba": "bin/www.js"

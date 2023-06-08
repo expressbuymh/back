@@ -1,18 +1,20 @@
-import User from '../../models/User.js'
+import usersServices from '../../services/user.service.js'
+
 const token = async (req, res, next) => {
-  const { email } = req.user
   try {
-    const user = await User.findOneAndUpdate(
-      { email },
-      { is_online: true },
-      { new: true }
-    )
+    const user = await usersServices.sign_in_token(req.user)
     return res.status(200).json({
       success: true,
       user
     })
   } catch (error) {
-    next(error)
+    return res.status(500).json({
+      success: false,
+      message: [{
+        path: 'Error',
+        message: 'Internal server error'
+      }]
+    })
   }
 }
 
