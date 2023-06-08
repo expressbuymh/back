@@ -54,6 +54,9 @@ const schema = new Schema({
     ref: 'subcategories',
     required: true
   },
+},
+{
+  timestamps: true
 })
 
 const collection = 'products'
