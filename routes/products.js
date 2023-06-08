@@ -22,6 +22,7 @@ router.delete('/:id', destroy)
 router.put('/:id', passport.authenticate('jwt', { session: false }), update)
 router.delete('/:id', passport.authenticate('jwt', { session: false }), destroy) */
 
+
 router.post('/', passport.authenticate('jwt', {session: false}), validator(create_schema), create)
 router.put('/:id', passport.authenticate('jwt', {session: false}), validator(update_schema), update)
 router.delete('/:id',passport.authenticate('jwt', {session: false}),  destroy)
