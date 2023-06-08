@@ -75,6 +75,37 @@ const productServices = {
             }
         }
 
+    },
+    get_one: async function(id){
+        try {
+            let product = await Product.findById(id)
+            if(product){
+                return{
+                    success: true,
+                    status_code: 201,
+                    product
+                }
+            }else{
+                return{
+                    success: false,
+                    status_code: 404,
+                    message: [{
+                        path: "notFound",
+                        message: "the product does not exist"
+                    }]
+                }
+            } 
+        } catch (error) {
+            return{
+                success: false,
+                status_code: 500,
+                message: [{
+                    path: "get",
+                    message: "There was an error while getting the product"
+                }]
+            }
+        }
+        
     }
 }
 export default productServices
