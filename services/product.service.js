@@ -31,7 +31,7 @@ const productServices = {
                 product
             }
         } catch (error) {
-            return{
+            return {
                 success: false,
                 status_code: 500,
                 message: [{
@@ -45,8 +45,36 @@ const productServices = {
     find: async function () {
         return null
     },
-    bajarStock: async function () {
-        return null
+    delete: async function (id) {
+        try {
+            let product = await Product.findByIdAndDelete(id)
+            if (product) {
+                return {
+                    success: true,
+                    product,
+                    status_code: 200
+                }
+            }
+            return {
+                success: false,
+                message: [{
+                    path: "notFound",
+                    message: "The product doesnt exists"
+                }],
+                status_code: 404
+            }
+
+        } catch (error) {
+            return {
+                success: false,
+                status_code: 500,
+                message: [{
+                    path: "delete",
+                    message: "an error ocurred while deleting product"
+                }]
+            }
+        }
+
     }
 }
 export default productServices

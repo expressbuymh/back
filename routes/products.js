@@ -7,6 +7,9 @@ import { create_schema, update_schema } from '../schema/products.js'
 //controllers
 import create from '../controllers/products/create.js'
 import update from '../controllers/products/update.js'
+import destroy from '../controllers/products/destroy.js'
+
+
 
 const router = Router()
 
@@ -21,5 +24,5 @@ router.delete('/:id', passport.authenticate('jwt', { session: false }), destroy)
 
 router.post('/', passport.authenticate('jwt', {session: false}), validator(create_schema), create)
 router.put('/:id', passport.authenticate('jwt', {session: false}), validator(update_schema), update)
-
+router.delete('/:id',passport.authenticate('jwt', {session: false}),  destroy)
 export default router
