@@ -1,12 +1,12 @@
-import addressServices from "../../services/address.service.js"
+import addressServices from "../../services/address.service.js";
 
-const create = async (req, res, next) => {
+const update = async (req, res, next) => {
+    req.body.user_id = req.user.id
     try {
-        req.body.user_id = req.user.id
-        let response = await addressServices.create(req.body)
+        let response = await addressServices.update(req.params.id, req.body)
         return res.status(response.status_code).json({
             success: response.success,
-            address: response.address,
+            address: response.addressUpdate,
         })
     } catch (error) {
         return res.status(500).json({
@@ -18,5 +18,4 @@ const create = async (req, res, next) => {
         })
     }
 }
-
-export default create
+export default update

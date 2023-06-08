@@ -25,5 +25,5 @@ router.use('/subcategories', subcategoriesRouter)
 router.use('/departments', departmentRouter)
 router.use('/paymments', paymentRouter)
 router.use('/orders', orderRouter)
-router.use('/address', addressRouter )
+router.use('/addresses', addressRouter )
 export default router
