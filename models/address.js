@@ -6,7 +6,30 @@ const schema = new mongoose.Schema({
       ref: 'users',
       required: true
     },
-    address: { type: String, required: true },
+    address_line: {
+      type: String,
+      required: true
+    },
+    city: {
+      type: String,
+      required: true
+    },
+    state:{
+      type: String,
+      required: true
+    },
+    country:{
+      type: String,
+      required: true
+    },
+    zip_code:{
+      type: Number,
+      required: true,
+    },
+    telephone:{
+      type: Number,
+      required: true
+    }
   }, {
     timestamps: true
   })
