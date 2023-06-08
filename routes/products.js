@@ -1,8 +1,12 @@
 import { Router } from 'express'
+//middlewares
 import validator from '../middleware/validator.js'
-import { create_schema } from '../schema/products.js'
 import passport from '../middleware/passport.js'
+//schema
+import { create_schema, update_schema } from '../schema/products.js'
+//controllers
 import create from '../controllers/products/create.js'
+import update from '../controllers/products/update.js'
 
 const router = Router()
 
@@ -16,5 +20,6 @@ router.put('/:id', passport.authenticate('jwt', { session: false }), update)
 router.delete('/:id', passport.authenticate('jwt', { session: false }), destroy) */
 
 router.post('/', passport.authenticate('jwt', {session: false}), validator(create_schema), create)
+router.put('/:id', passport.authenticate('jwt', {session: false}), validator(update_schema), update)
 
 export default router
