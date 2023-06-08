@@ -37,13 +37,12 @@ const schema = new Schema({
   role: {
     type: Number,
     required: true
-  },
+  }
 }, {
   timestamps: true
 })
 
 const collection = 'users'
 const User = model(collection, schema)
-
 
 export default User
