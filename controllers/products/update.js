@@ -1,23 +1,14 @@
 import Product from '../../models/Product.js'
+import productServices from '../../services/product.service.js'
 
 const update = async (req, res, next) => {
   try {
-    const updateProduct = await Product.findByIdAndUpdate(
-      req.params.id, req.body, { new: true })
-    if (updateProduct) {
-      return res.status(200).json({
-        success: true,
-        updateProduct
-      })
-    } else {
-      return res.status(404).json({
-        success: false,
-        message: [{
-          path: 'exists',
-          message: "The products doesn't exists"
-        }]
-      })
-    }
+    let response = await productServices.update(req.params.id, req.body)
+    return res.status(response.status_code).json({
+      success: response.success,
+      product: response.product,
+      message: response.message
+    })
   } catch (error) {
     return res.status(500).json({
       success: false,
