@@ -11,7 +11,9 @@ productsServices = {
     },
     find: async function(){
         return null
+    },
+    bajarStock: async function(){
+        return null
     }
 }
-
 export default services
