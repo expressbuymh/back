@@ -2,7 +2,8 @@ import Order from '../../models/Orders.js'
 
 const read = async (req, res) => {
   try {
-
+  
+    
     
     const seeOrders = await Order.findOne({_id: req.params.id})
     
