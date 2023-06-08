@@ -83,6 +83,27 @@ const cartServices = {
                 }]
             }
         }
+    },
+    clear_product: async function (cart_id) {
+        try {
+            let clear = await Cart.findById(cart_id)
+            clear.products = []
+            await clear.save()
+            return {
+                success: true,
+                status_code: 200,
+                clear: clear
+            }
+        } catch (error) {
+            return {
+                success: false,
+                status_code: 500,
+                message: [{
+                    path: 'clearcart',
+                    message: 'There was an error while clear the cart'
+                }]
+            }
+        }
     }
 }
 export default cartServices
