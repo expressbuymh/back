@@ -25,6 +25,27 @@ const cartServices = {
             }
         }
     },
+    getme_cart: async function (user_id) {
+        try {
+            let getme = await Cart.find({ user_id: user_id })
+            return {
+                success: true,
+                status_code: 200,
+                getme
+            }
+        } catch (error) {
+            return {
+                success: false,
+                status_code: 500,
+                message: [{
+                    path: 'getmecart',
+                    message: 'There was an error while reading the cart'
+                }]
+            }
+        }
+
+
+    },
     add_product: async function (cart_id, product_id, quantity) {
         try {
             let cart = await Cart.findById(cart_id)

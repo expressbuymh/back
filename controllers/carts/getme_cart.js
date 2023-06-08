@@ -1,23 +1,21 @@
 import cartServices from "../../services/cart.service.js";
 
-let create = async (req, res, next) => {
+let getmeCart = async (req, res, next) => {
     try {
-        let aca = req.user.id
-        console.log(aca)
-        let response = await cartServices.create(req.user.id)
+        let response = await cartServices.getme_cart(req.user.id)
         return res.status(response.status_code).json({
             success: response.success,
             message: response.message,
-            cart: response.cart
+            getme: response.getme
         })
     } catch (error) {
-        return res.status(500).json({
+        return {
             succes: false,
             message: [{
                 path: 'internal',
                 message: 'Internal server error'
             }]
-        })
+        }
     }
 }
-export default create
+export default getmeCart
