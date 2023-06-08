@@ -1,16 +1,16 @@
-import cartServices from "../../services/cart.service.js"
+import cartServices from "../../services/cart.service.js";
 
-let addProducts = async (req, res, next) => {
+let create = async (req, res, next) => {
     try {
-        let response = await cartServices.add_product(req.params.id, req.body.product_id, req.body.quantity)
+        let response = await cartServices.create(req.user.id)
         return res.status(response.status_code).json({
-            succes: response.success,
+            success: response.success,
             message: response.message,
             cart: response.cart
         })
     } catch (error) {
         return res.status(500).json({
-            success: false,
+            succes: false,
             message: [{
                 path: 'internal',
                 message: 'Internal server error'
@@ -18,5 +18,4 @@ let addProducts = async (req, res, next) => {
         })
     }
 }
-
-export default addProducts
+export default create

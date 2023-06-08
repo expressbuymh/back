@@ -25,11 +25,33 @@ const cartServices = {
             }
         }
     },
-    add_product: async function () {
+    add_product: async function (cart_id, product_id, quantity) {
         try {
-            let addCart = await Cart
+            let cart = await Cart.findById(cart_id)
+            const existingProduct = cart.products.find(product => product.product_id.toString() === product_id)
+            if (existingProduct) {
+                existingProduct.quantity = quantity
+            } else {
+                cart.products.push({
+                    product_id: product_id,
+                    quantity: quantity
+                })
+            }
+            cart.save()
+            return {
+                success: true,
+                status_code: 200,
+                cart: cart
+            }
         } catch (error) {
-
+            return {
+                success: false,
+                status_code: 500,
+                message: [{
+                    path: 'add',
+                    message: 'There was an error while add the cart'
+                }]
+            }
         }
     },
     get_by_id: async function (cart_id) {
@@ -63,3 +85,4 @@ const cartServices = {
         }
     }
 }
+export default cartServices
