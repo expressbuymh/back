@@ -21,6 +21,9 @@ const discountServices = {
             }
         }
         
+    },
+    delete: async function(id){
+        await Discount.findOneAndDelete(id);
     }
 }
 
