@@ -6,7 +6,6 @@ import categoriesRouter from './categories.js'
 import subcategoriesRouter from './subcategories.js'
 import departmentRouter from './departments.js'
 import paymentRouter from './paymments.js'
-import stocksRouter from './stocks.js'
 import orderRouter from './orders.js'
 import addressRouter from './address.js'
 
@@ -26,6 +25,5 @@ router.use('/subcategories', subcategoriesRouter)
 router.use('/departments', departmentRouter)
 router.use('/paymments', paymentRouter)
 router.use('/orders', orderRouter)
-router.use('/stocks', stocksRouter)
 router.use('/address', addressRouter )
 export default router

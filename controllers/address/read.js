@@ -1,5 +1,6 @@
 import Address from "../../models/address.js";
 
+
 const read = async (req, res) => {
   try {
     const addressId = await Address.find({user_id: req.params.id})

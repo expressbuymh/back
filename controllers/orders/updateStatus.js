@@ -1,4 +1,4 @@
-import Order from "../../models/Orders.js";
+import Order from "../../models/Order.js";
 
 const update = async (req, res, next) => {
     const id = req.params.id

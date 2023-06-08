@@ -1,4 +1,4 @@
-import Order from "../../models/Orders.js"
+import Order from "../../models/Order.js"
 
 let getOrders = async (req, res, next) => {
     let queries = {}

@@ -1,9 +1,15 @@
-import User from "../models/User";
+import User from "../models/User.js";
 import jwt from 'jsonwebtoken'
 
 const usersServices = {
-    sign_in: async function () {
-        return null
+    sign_in: async function (email) {
+        let user = await User.findByIdAndUpdate(
+            { email: email, },
+            { is_online: true },
+            { new: true }
+        )
+        let token = this.jwt_sign(user)
+        return {token, user}
     },
     sing_up: async function () {
         return null

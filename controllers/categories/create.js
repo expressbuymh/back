@@ -1,8 +1,8 @@
-import Categories from '../../models/Categories.js'
+import Category from '../../models/Category.js'
 
 const create = async (req, res, next) => {
   try {
-    const newCategory = await Categories(req.body)
+    const newCategory = await Category(req.body)
     await newCategory.save()
     return res.status(201).json({
       succes: true,

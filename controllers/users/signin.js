@@ -1,18 +1,11 @@
 import User from '../../models/User.js'
 import jwt from 'jsonwebtoken'
+import usersServices from '../../services/user.service.js'
 
 const signIn = async (req, res, next) => {
   try {
-    const user = await User.findOneAndUpdate(
-      { email: req.body.email },
-      { is_online: true },
-      { new: true }
-    )
-    const token = jwt.sign(
-      { id: user._id },
-      process.env.SECRET,
-      { expiresIn: 60 * 60 * 24 }
-    )
+    const user = usersServices.sign_in(req.body.email)
+    
     return res.status(200).json({
       success: true,
       token,

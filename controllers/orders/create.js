@@ -1,4 +1,4 @@
-import Orders from '../../models/Orders.js'
+import Orders from '../../models/Order.js'
 
 const create = async (req,res,next)=> {
     try {

@@ -1,4 +1,4 @@
-import Product from '../../models/Products.js'
+import Product from '../../models/Product.js'
 
 const destroy = async (req, res, next) => {
   try {
