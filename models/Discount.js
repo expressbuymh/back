@@ -1,11 +1,6 @@
-import { Schema, model, Types } from 'mongoose'
+import { Schema, model } from 'mongoose'
 
 const schema = new Schema({
-  product_id: {
-    type: Types.ObjectId,
-    ref: 'products',
-    required: true
-  },
   active: {
     type: Boolean,
     required: true
