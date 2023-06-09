@@ -1,9 +1,31 @@
 import express from 'express'
-const router = express.Router();
+import userRouter from './users.js'
+import productsRouter from './products.js'
+import invoicesRouter from './invoice.js'
+import categoriesRouter from './categories.js'
+import subcategoriesRouter from './subcategories.js'
+import departmentRouter from './departments.js'
+import paymentRouter from './paymments.js'
+import stocksRouter from './stocks.js'
+import orderRouter from './orders.js'
+import addressRouter from './address.js'
+
+
+const router = express.Router()
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.get('/', function (req, res, next) {
+  res.render('index', { title: 'Express' })
+})
 
-export default  router;
+router.use('/auth', userRouter)
+router.use('/products', productsRouter)
+router.use('/invoices', invoicesRouter)
+router.use('/categories', categoriesRouter)
+router.use('/subcategories', subcategoriesRouter)
+router.use('/departments', departmentRouter)
+router.use('/paymments', paymentRouter)
+router.use('/orders', orderRouter)
+router.use('/stocks', stocksRouter)
+router.use('/address', addressRouter )
+export default router
