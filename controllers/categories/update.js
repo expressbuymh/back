@@ -1,31 +1,22 @@
-import Category from "../../models/Category.js"
+import categoryServices from "../../services/category.service.js";
 
-const update = async (req, res, next) => {
-  try {
-    const categoryUpdate = await Category.findByIdAndUpdate(
-      req.params.id, req.body, { new: true })
-    if (categoryUpdate) {
-      return res.status(200).json({
-        succes: true,
-        categoryUpdate
-      })
-    } else {
-      return res.status(400).json({
-        succes: false,
-        message: [{
-          path: 'categories',
-          message: "The Category doesn't exists"
-        }]
-      })
+let update = async(req,res,next) => {
+    try {
+        let response = await categoryServices.update(req.params.id, req.body)
+        return res.status(response.status_code).json({
+            success: response.success,
+            message: response.message,
+            category: response.updated_category
+        })
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: [{
+                path: 'Internal',
+                message: 'Internal Server error'
+            }]
+        })
     }
-  } catch (error) {
-    return res.status(500).json({
-      succes: false,
-      message: [{
-        path: 'server',
-        message: 'Error internal the server'
-      }]
-    })
-  }
 }
+
 export default update

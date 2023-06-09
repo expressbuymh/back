@@ -12,7 +12,7 @@ import {schema} from '../schema/categories.js'
 
 const router = Router()
 
-router.post('/',passport.authenticate('jwt', { session: false }),/*validator(schema),*/ create)
+router.post('/',passport.authenticate('jwt', { session: false }),validator(schema), create)
 router.get('/admin', read)  //middle para verificar role
 router.get('/', read_actives)
 router.put('/:id',passport.authenticate('jwt', { session: false }), update)

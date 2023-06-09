@@ -63,6 +63,25 @@ const categoryServices = {
                 }]
             }
         }
+    },
+    update: async function(id, body) {
+        try {
+            let updated_category = await Category.findByIdAndUpdate(id, body, { new: true })
+            return {
+                success: true,
+                status_code: 201,
+                updated_category
+            }
+        } catch (error) {
+            return {
+                success: false,
+                status_code: 500,
+                message: [{
+                    path: 'update',
+                    message: 'There was an error trying update the category'
+                }]
+            }
+        }
     }
 }
 
