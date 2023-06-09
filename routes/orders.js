@@ -1,19 +1,23 @@
 import { Router } from 'express'
-import creeateOrder from '../controllers/orders/create.js'
-import allOrders from '../controllers/orders/read.js'
-import my_orders from '../controllers/orders/my_orders.js'
-import getOrders from '../controllers/orders/getAll.js'
-import update from '../controllers/orders/updateStatus.js'
-
+//middlewares
 import passport from '../middleware/passport.js'
-
+//controllers
+import statusPaid from '../controllers/orders/status_paid.js'
+import statusShipped from '../controllers/orders/status_shipped.js'
+import statusDelivered from '../controllers/orders/status_delivered.js'
+import statusCancel from '../controllers/orders/status_cancel.js'
+import myOrders from '../controllers/orders/get_me.js'
+import getOrders from '../controllers/orders/admin_orders.js'
 const router = Router()
 
-router.get('/:id', allOrders)
-router.post('/seeorders', passport.authenticate('jwt', { session: false }),creeateOrder)
-router.get("/myorders", passport.authenticate("jwt", {session: false}), my_orders)
-router.get('/', passport.authenticate('jwt', { session: false }), getOrders)
-router.put('/:id', passport.authenticate('jwt', { session: false }), update)
+
+//cambia la orden a paid
+router.put('/paid/:id', passport.authenticate('jwt',{session: false}), statusPaid)
+router.put('/shipped/:id', passport.authenticate('jwt',{session: false}), statusShipped)
+router.put('/delivered/:id', passport.authenticate('jwt',{session: false}), statusDelivered)
+router.put('/cancel/:id', passport.authenticate('jwt',{session: false}), statusCancel)
+router.get('/me', passport.authenticate('jwt',{session: false}), myOrders)
+router.get('/', passport.authenticate('jwt',{session: false}), getOrders)
 
 
 

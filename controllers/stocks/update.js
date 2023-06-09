@@ -1,4 +1,4 @@
-import Stock from "../../models/Stocks.js";
+/* import Stock from "../../models/Stocks.js";
 
 const update = async(res,req,next) => {
     try {
@@ -23,4 +23,4 @@ const update = async(res,req,next) => {
     }
 }
 
-export default update
+export default update */

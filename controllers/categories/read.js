@@ -1,8 +1,8 @@
-import Categories from '../../models/Categories.js'
+import Category from "../../models/Category.js"
 
 const read = async (req, res, next) => {
   try {
-    const allCategories = await Categories.find()
+    const allCategories = await Category.find()
     return res.status(200).json({
       success: true,
       allCategories

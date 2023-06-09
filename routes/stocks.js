@@ -1,4 +1,4 @@
-import { Router } from "express";
+/* import { Router } from "express";
 import create from '../controllers/stocks/create.js'
 import read from '../controllers/stocks/read.js'
 import update from '../controllers/stocks/update.js'
@@ -11,4 +11,4 @@ router.get('/', read)
 router.put('/:id', update)
 router.delete('/:id', destroy)
 
-export default router
+export default router */

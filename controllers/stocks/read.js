@@ -1,4 +1,4 @@
-import Stocks from './../../models/Stocks.js'
+/* import Stocks from './../../models/Stocks.js'
 
 let read = async(req,res,next) => {
     try {
@@ -15,4 +15,4 @@ let read = async(req,res,next) => {
     }
 }
 
-export default read
+export default read */

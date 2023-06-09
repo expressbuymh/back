@@ -1,4 +1,4 @@
-import Product from "../../models/Products.js"
+import Product from "../../models/Product.js"
 
 async function existsProduct(req, res, next) {
     const titleManga = await Product.findOne({ title: req.body.title })

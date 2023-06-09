@@ -1,4 +1,4 @@
-import Stock from "../../models/Stocks.js";
+/* import Stock from "../../models/Stocks.js";
 
 const destroy = async(req,res,next) => {
     try {
@@ -23,4 +23,4 @@ const destroy = async(req,res,next) => {
     }
 }
 
-export default destroy
+export default destroy */

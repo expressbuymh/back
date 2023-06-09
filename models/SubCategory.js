@@ -12,7 +12,7 @@ const schema = new Schema({
   }
 })
 
-const collection = 'subCategories'
+const collection = 'subcategories'
 
-const SubCategory = model(collection, schema)
-export default SubCategory/*  */
+const Subcategory = model(collection, schema)
+export default Subcategory

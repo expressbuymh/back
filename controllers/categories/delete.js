@@ -1,8 +1,9 @@
-import Categories from '../../models/Categories.js'
+import Category from "../../models/Category.js"
+
 
 const destroy = async (req, res, next) => {
   try {
-    const destroyCategory = await Categories.findByIdAndDelete(req.params.id)
+    const destroyCategory = await Category.findByIdAndDelete(req.params.id)
     if (destroyCategory) {
       return res.status(200).json({
         succes: true,
