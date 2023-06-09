@@ -100,6 +100,38 @@ const cartServices = {
             }
         }
     },
+    delete_product: async function (cart_id, produc_id) {
+        try {
+            let deleteproduct = await Cart.findById(cart_id)
+            let 
+            if (deleteproduct) {
+                return {
+                    success: true,
+                    status_code: 200,
+                    deleteproduct
+                }
+            } else {
+                return {
+                    success: false,
+                    status_code: 404,
+                    message: [{
+                        path: 'notFound',
+                        message: 'The product does not exist in the cart'
+                    }]
+                }
+            }
+        } catch (error) {
+            return {
+                success: false,
+                status_code: 500,
+                message: [{
+                    path: 'getcart',
+                    message: 'There was an error while getting the cart'
+                }]
+            }
+        }
+
+    },
     get_by_id: async function (cart_id) {
         try {
             let cart = await Cart.findById(cart_id)
@@ -161,7 +193,7 @@ const cartServices = {
             return {
                 success: true,
                 status_code: 200,
-                cart : checkout
+                cart: checkout
             }
         } catch (error) {
             return {
