@@ -6,6 +6,7 @@ import clearProduct from "../controllers/carts/clearProduct.js";
 import getmeCart from "../controllers/carts/getme_cart.js";
 import checkoutProduct from "../controllers/carts/checkout.js";
 import deleteProduct from "../controllers/carts/deleteProduct.js";
+
 const router = Router()
 
 //esto es interno hay q sacar el post de carrito dejar solo el de producto

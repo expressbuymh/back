@@ -3,6 +3,7 @@ import SubCategory from "../../models/SubCategory.js"
 const update = async (req, res, next) => {
   try {
     const subCategoryUpdate = await SubCategory.findByIdAndUpdate(
+
       req.params.id, req.body, { new: true })
     if (subCategoryUpdate) {
       return res.status(200).json({
