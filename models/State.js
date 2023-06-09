@@ -5,10 +5,10 @@ const schema = new Schema({
         type: String,
         required: true
     },
-    code: {
+    code: [{
         type: Number,
         required: true,
-    }
+    }]
 })
 
 const collection = 'status'
