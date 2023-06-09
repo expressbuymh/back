@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
 
 mongoose.set('strictQuery', false)
 mongoose.connect(process.env.MONGO)
-    .then( () => console.log('database conected'))
-    .catch(err => console.log(err) )
+  .then(() => console.log('database conected'))
+  .catch(err => console.log(err))
