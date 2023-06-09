@@ -6,7 +6,7 @@ const get_me = async (req, res) => {
     let response = await addressServices.get_me(req.user.id)
     return res.status(200).json({
       success: response.success,
-      address: response.addressMe
+      addresses: response.addressMe
     })
   } catch (error) {
     return res.status(500).json({

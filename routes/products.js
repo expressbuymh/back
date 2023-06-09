@@ -23,9 +23,9 @@ router.put('/:id', passport.authenticate('jwt', { session: false }), update)
 router.delete('/:id', passport.authenticate('jwt', { session: false }), destroy) */
 
 
-router.put('/active/:id', active)
+router.put('/active/:id',passport.authenticate('jwt', {session: false}), active)
 router.post('/', passport.authenticate('jwt', {session: false}), validator(create_schema), create)
 router.put('/:id', passport.authenticate('jwt', {session: false}), validator(update_schema), update)
 router.delete('/:id',passport.authenticate('jwt', {session: false}),  destroy)
-router.get('/:id', getOne)
+router.get('/:id',getOne)
 export default router

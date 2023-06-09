@@ -7,7 +7,7 @@ import getmeCart from "../controllers/carts/getme_cart.js";
 import checkoutProduct from "../controllers/carts/checkout.js";
 const router = Router()
 
-
+//esto es interno hay q sacar el post de carrito dejar solo el de producto
 router.post('/', passport.authenticate('jwt', { session: false }), create)
 router.post('/addproducts/:id', passport.authenticate('jwt', { session: false }), addProducts)
 router.put('/clear/:id', passport.authenticate('jwt', { session: false }), clearProduct)

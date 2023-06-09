@@ -145,6 +145,7 @@ const productServices = {
             if (bd_product) {
                 if (bd_product.stock - product.quantity >= 0) {
                     bd_product.stock = bd_product.stock - product.quantity
+                    await bd_product.save()
                 } else {
                     let newError = {
                         path: bd_product._id,
