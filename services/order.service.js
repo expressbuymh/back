@@ -78,8 +78,36 @@ const orderServices = {
                     }]
             }
         }
-
-
+    },
+    shipped: async function (id) {
+        try {
+            let order = await Order.findByIdAndUpdate(id, { status: "shipped" }, { new: true })
+            if (order) {
+                return {
+                    success: true,
+                    status_code: 200,
+                    order
+                }
+            } else {
+                return {
+                    success: false,
+                    status_code: 404,
+                    message: [{
+                        path: "notFound",
+                        message: "the order doesn't exists"
+                    }]
+                }
+            }
+        } catch (error) {
+            return{
+                success: false,
+                    status_code: 500,
+                    message: [{
+                        path: "update",
+                        message: "an error ocurred while updating the order"
+                    }]
+            }
+        }
     }
 }
 export default orderServices
