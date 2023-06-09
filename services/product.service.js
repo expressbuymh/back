@@ -191,9 +191,26 @@ const productServices = {
                 success: false,
                 status_code: 500,
                 message: [{
-                    path: "update",
-                    message: "An error ocurred while updating product"
+                    path: "get_discounts",
+                    message: "An error ocurred while discounts product"
                 }]
+            }
+        }
+    },
+    pagination_products: async function(pagination){
+        try {
+            const productsPagination = await Product.find().skip(pagination.page > 0 ? (pagination.page-1)*pagination.limit : 0)
+            .limit(pagination.limit > 0 ? pagination.limit : 0)
+            
+            return {
+                success: true,
+                status_code: 200,
+                productsPagination
+            }
+        } catch (error) {
+            return {
+                succes: false,
+                status_code: 500,
             }
         }
     }
