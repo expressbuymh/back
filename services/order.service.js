@@ -10,14 +10,14 @@ const orderServices = {
             console.log(body.n_order)
             body.total_price = this.get_total_price(products_populate)
             let order = await Order.create(body)
-            
+
             return {
                 success: true,
                 status_code: 201,
                 order
             }
         } catch (error) {
-            
+
             return {
                 success: false,
                 status_code: 500,
@@ -31,7 +31,7 @@ const orderServices = {
     get_last_order: async function () {
         try {
             let order = await Order.find().sort({ n_order: -1 }).limit(1)
-            
+
             if (order.length > 0) {
                 return order[0].n_order
             }
@@ -48,6 +48,38 @@ const orderServices = {
             }
         }
         return total_price
+    },
+    paid: async function (id) {
+        try {
+            let order = await Order.findByIdAndUpdate(id, { status: "paid" }, { new: true })
+            if (order) {
+                return {
+                    success: true,
+                    status_code: 200,
+                    order
+                }
+            } else {
+                return {
+                    success: false,
+                    status_code: 404,
+                    message: [{
+                        path: "notFound",
+                        message: "the order doesn't exists"
+                    }]
+                }
+            }
+        } catch (error) {
+            return{
+                success: false,
+                    status_code: 500,
+                    message: [{
+                        path: "update",
+                        message: "an error ocurred while updating the order"
+                    }]
+            }
+        }
+
+
     }
 }
 export default orderServices
