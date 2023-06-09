@@ -1,15 +1,15 @@
-import departmentService from "../../services/department.service.js"
+import cartServices from "../../services/cart.service.js";
 
-let create = async (req, res, next) => {
+let deleteProduct = async (req, res, next) => {
     try {
-        let response = await departmentService.create(req.body)
+        let response = await cartServices.delete_product(req.params.id, req.body)
         return res.status(response.status_code).json({
             succes: response.success,
             message: response.message,
-            department: response.department
+            product_delete: response.product_delete
         })
     } catch (error) {
-        return res.status(500).json({
+      return res.status(500).json({
             succes: false,
             message: [{
                 path: 'internal',
@@ -18,4 +18,4 @@ let create = async (req, res, next) => {
         })
     }
 }
-export default create
+export default deleteProduct

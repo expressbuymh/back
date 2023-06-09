@@ -1,4 +1,5 @@
 import express from 'express'
+
 // COLOCAR CONTROLLERS
 import newUser from '../controllers/users/signup.js'
 import signIn from '../controllers/users/signin.js'

@@ -1,4 +1,5 @@
 import express from 'express'
+const router = express.Router();
 import userRouter from './users.js'
 import productsRouter from './products.js'
 import invoicesRouter from './invoice.js'
@@ -11,7 +12,6 @@ import addressRouter from './address.js'
 import cartRouter from './carts.js'
 
 
-const router = express.Router()
 
 /* GET home page. */
 router.get('/', function (req, res, next) {

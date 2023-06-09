@@ -175,6 +175,27 @@ const productServices = {
                 message: "Success"
             }
         }
+    },
+    get_discounts: async function (){
+        try {
+
+            let products = await Product.find({active:true}).populate({path:"discount_id", macth: {active:true}}).limit(10)
+            
+            return {
+                success: true,
+                status_code: 200,
+                products
+            }
+        } catch (error) {
+            return {
+                success: false,
+                status_code: 500,
+                message: [{
+                    path: "update",
+                    message: "An error ocurred while updating product"
+                }]
+            }
+        }
     }
 }
 export default productServices
