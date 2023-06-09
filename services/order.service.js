@@ -168,6 +168,66 @@ const orderServices = {
                     }]
             }
         }
+    },
+    get_me: async function (user_id) {
+        try {
+            let orders = await Order.find({user_id: user_id})
+            if (orders.length > 0) {
+                return {
+                    success: true,
+                    status_code: 200,
+                    orders
+                }
+            } else {
+                return {
+                    success: false,
+                    status_code: 404,
+                    message: [{
+                        path: "notFound",
+                        message: "the user doesn't has orders yet"
+                    }]
+                }
+            }
+        } catch (error) {
+            return{
+                success: false,
+                    status_code: 500,
+                    message: [{
+                        path: "get",
+                        message: "an error ocurred while updating the order"
+                    }]
+            }
+        }
+    },
+    get_all: async function (user_id) {
+        try {
+            let orders = await Order.find()
+            if (orders.length > 0) {
+                return {
+                    success: true,
+                    status_code: 200,
+                    orders
+                }
+            } else {
+                return {
+                    success: false,
+                    status_code: 404,
+                    message: [{
+                        path: "notFound",
+                        message: "the user doesn't has orders yet"
+                    }]
+                }
+            }
+        } catch (error) {
+            return{
+                success: false,
+                    status_code: 500,
+                    message: [{
+                        path: "get",
+                        message: "an error ocurred while updating the order"
+                    }]
+            }
+        }
     }
 }
 export default orderServices
