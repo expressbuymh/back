@@ -12,7 +12,7 @@ router.post('/', passport.authenticate('jwt', { session: false }), create)
 router.post('/addproducts/:id', passport.authenticate('jwt', { session: false }), addProducts)
 router.put('/clear/:id', passport.authenticate('jwt', { session: false }), clearProduct)
 router.get('/', passport.authenticate('jwt', { session: false }), getmeCart)
-router.put('/checkout/:id', checkoutProduct)
+router.put('/checkout/:id', passport.authenticate('jwt', { session: false }), checkoutProduct)
 
 
 export default router

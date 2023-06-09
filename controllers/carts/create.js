@@ -2,8 +2,6 @@ import cartServices from "../../services/cart.service.js";
 
 let create = async (req, res, next) => {
     try {
-        let aca = req.user.id
-        console.log(aca)
         let response = await cartServices.create(req.user.id)
         return res.status(response.status_code).json({
             success: response.success,

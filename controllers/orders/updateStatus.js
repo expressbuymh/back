@@ -4,7 +4,7 @@ const update = async (req, res, next) => {
     const id = req.params.id
     try {
         let update = await Order.updateOne(
-            {_id:  id },
+            { _id: id },
             req.body
         )
         if (update.modifiedCount) {
