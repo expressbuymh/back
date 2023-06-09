@@ -9,7 +9,13 @@ let deleteProduct = async (req, res, next) => {
             product_delete: response.product_delete
         })
     } catch (error) {
-
+      return res.status(500).json({
+            succes: false,
+            message: [{
+                path: 'internal',
+                message: 'Internal server error'
+            }]
+        })
     }
 }
 export default deleteProduct

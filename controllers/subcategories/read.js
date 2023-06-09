@@ -1,6 +1,7 @@
 import SubCategory from "../../models/SubCategory.js"
 
 
+
 const read = async (req, res, next) => {
   try {
     const allSubcategories = await SubCategory.find()
