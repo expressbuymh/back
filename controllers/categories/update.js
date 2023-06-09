@@ -1,8 +1,8 @@
-import Categories from '../../models/Categories.js'
+import Category from "../../models/Category.js"
 
 const update = async (req, res, next) => {
   try {
-    const categoryUpdate = await Categories.findByIdAndUpdate(
+    const categoryUpdate = await Category.findByIdAndUpdate(
       req.params.id, req.body, { new: true })
     if (categoryUpdate) {
       return res.status(200).json({

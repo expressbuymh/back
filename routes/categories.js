@@ -1,7 +1,7 @@
 import { Router } from 'express'
 
 import passport from '../middleware/passport.js'
-import validator from '../middleware/categories/validator.js'
+import validator from '../middleware/validator.js'
 import create from '../controllers/categories/create.js'
 import read from '../controllers/categories/read.js'
 import update from '../controllers/categories/update.js'

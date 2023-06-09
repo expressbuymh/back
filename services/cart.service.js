@@ -1,0 +1,178 @@
+
+import Cart from '../models/Cart.js'
+
+
+const cartServices = {
+    create: async function (userId) {
+        try {
+            let data = {
+                user_id: userId,
+                address_id: null,
+                products: [],
+            }
+            let newCart = await Cart.create(data)
+            return {
+                success: true,
+                cart: newCart,
+                status_code: 200
+            }
+        } catch (error) {
+            return {
+                success: false,
+                status_code: 500,
+                message: [{
+                    path: 'create',
+                    message: 'There was an error while creating the cart'
+                }]
+            }
+        }
+    },
+    getme_cart: async function (user_id) {
+        try {
+            let cart = await Cart.findOne({ user_id: user_id }).populate({
+                path: 'products',
+                populate: {
+                    path: 'product_id'
+                }
+            })
+            return {
+                success: true,
+                status_code: 200,
+                cart
+            }
+        } catch (error) {
+            return {
+                success: false,
+                status_code: 500,
+                message: [{
+                    path: 'getmecart',
+                    message: 'There was an error while reading the cart'
+                }]
+            }
+        }
+    },
+    get_cart_order: async function (user_id) {
+        try {
+            let cart = await Cart.findOne({ user_id })
+            let products_unpopulate = cart.products
+            let cart_populate = await cart.populate({
+                path: 'products',
+                populate: {
+                    path: 'product_id'
+                }
+            })
+            let products_populate = cart_populate.products
+            let address_id = cart.address_id
+            return {
+                products_unpopulate,
+                products_populate,
+                address_id
+            }
+        } catch (error) {
+        }
+    },
+    add_product: async function (cart_id, product_id, quantity) {
+        try {
+            let cart = await Cart.findById(cart_id)
+            const existingProduct = cart.products.find(product => product.product_id.toString() === product_id)
+            if (existingProduct) {
+                existingProduct.quantity = quantity
+            } else {
+                cart.products.push({
+                    product_id: product_id,
+                    quantity: quantity
+                })
+            }
+            cart.save()
+            return {
+                success: true,
+                status_code: 200,
+                cart: cart
+            }
+        } catch (error) {
+            return {
+                success: false,
+                status_code: 500,
+                message: [{
+                    path: 'add',
+                    message: 'There was an error while add the cart'
+                }]
+            }
+        }
+    },
+    get_by_id: async function (cart_id) {
+        try {
+            let cart = await Cart.findById(cart_id)
+            if (cart) {
+                return {
+                    success: true,
+                    cart,
+                    status_code: 200
+                }
+            } else {
+                return {
+                    success: false,
+                    status_code: 404,
+                    message: [{
+                        path: 'notFound',
+                        message: 'No shopping cart found'
+                    }]
+                }
+            }
+        } catch (error) {
+            return {
+                success: false,
+                status_code: 500,
+                message: [{
+                    path: 'getcart',
+                    message: 'There was an error while getting the cart'
+                }]
+            }
+        }
+    },
+    clear_product: async function (cart_id) {
+        try {
+            let clear = await Cart.findById(cart_id)
+            clear.products = []
+            await clear.save()
+            return {
+                success: true,
+                status_code: 200,
+                clear: clear
+            }
+        } catch (error) {
+            return {
+                success: false,
+                status_code: 500,
+                message: [{
+                    path: 'clearcart',
+                    message: 'There was an error while clear the cart'
+                }]
+            }
+        }
+    },
+    checkout: async function (cart_id) {
+        try {
+            console.log(cart_id)
+            let checkout = await Cart.findById(cart_id)
+            if (checkout) {
+                this.clear_product(cart_id)
+            }
+            return {
+                success: true,
+                status_code: 200,
+                cart : checkout
+            }
+        } catch (error) {
+            return {
+                success: false,
+                status_code: 500,
+                message: [{
+                    path: 'checkoutcart',
+                    message: 'There was an error while checkout the cart'
+                }]
+            }
+        }
+    }
+}
+export default cartServices

@@ -1,4 +1,4 @@
-import Stock from "../../models/Stocks.js";
+/* import Stock from "../../models/Stocks.js";
 
 let create = async(res,req,next) => {
     try {
@@ -15,4 +15,4 @@ let create = async(res,req,next) => {
     }
 }
 
-export default create
+export default create */
