@@ -76,17 +76,17 @@ const productServices = {
         }
 
     },
-    get_one: async function(id){
+    get_one: async function (id) {
         try {
             let product = await Product.findById(id)
-            if(product){
-                return{
+            if (product) {
+                return {
                     success: true,
                     status_code: 201,
                     product
                 }
-            }else{
-                return{
+            } else {
+                return {
                     success: false,
                     status_code: 404,
                     message: [{
@@ -94,9 +94,9 @@ const productServices = {
                         message: "the product does not exist"
                     }]
                 }
-            } 
+            }
         } catch (error) {
-            return{
+            return {
                 success: false,
                 status_code: 500,
                 message: [{
@@ -105,7 +105,38 @@ const productServices = {
                 }]
             }
         }
-        
+
+    },
+    active: async function (id) {
+        try {
+            let product = await Product.findById(id)
+            if (product) {
+                product.active = !product.active
+                await product.save()
+                return {
+                    success: true,
+                    product,
+                    status_code: 200
+                }
+            }
+            return {
+                success: false,
+                message: [{
+                    path: "notFound",
+                    message: "the product does not exist"
+                }],
+                status_code: 404
+            }
+        } catch (error) {
+            return {
+                success: false,
+                message: [{
+                    path: "update",
+                    message: "There was an error while updating the product"
+                }]
+            }
+        }
+
     }
 }
 export default productServices

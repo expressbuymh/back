@@ -9,7 +9,7 @@ import create from '../controllers/products/create.js'
 import update from '../controllers/products/update.js'
 import destroy from '../controllers/products/destroy.js'
 import getOne from '../controllers/products/get_one.js'
-
+import active from '../controllers/products/active.js'
 
 const router = Router()
 
@@ -23,6 +23,7 @@ router.put('/:id', passport.authenticate('jwt', { session: false }), update)
 router.delete('/:id', passport.authenticate('jwt', { session: false }), destroy) */
 
 
+router.put('/active/:id', active)
 router.post('/', passport.authenticate('jwt', {session: false}), validator(create_schema), create)
 router.put('/:id', passport.authenticate('jwt', {session: false}), validator(update_schema), update)
 router.delete('/:id',passport.authenticate('jwt', {session: false}),  destroy)
