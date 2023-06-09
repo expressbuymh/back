@@ -10,6 +10,8 @@ import update from '../controllers/products/update.js'
 import destroy from '../controllers/products/destroy.js'
 import getOne from '../controllers/products/get_one.js'
 import active from '../controllers/products/active.js'
+import discount from '../controllers/products/products_discount.js'
+import allDiscount from '../controllers/products/products_discount.js'
 
 const router = Router()
 
@@ -23,6 +25,8 @@ router.put('/:id', passport.authenticate('jwt', { session: false }), update)
 router.delete('/:id', passport.authenticate('jwt', { session: false }), destroy) */
 
 
+
+router.get('/discount', allDiscount)
 router.put('/active/:id',passport.authenticate('jwt', {session: false}), active)
 router.post('/', passport.authenticate('jwt', {session: false}), validator(create_schema), create)
 router.put('/:id', passport.authenticate('jwt', {session: false}), validator(update_schema), update)
