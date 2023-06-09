@@ -1,7 +1,5 @@
 import express from 'express'
 
-
-
 // COLOCAR CONTROLLERS
 import newUser from '../controllers/users/signup.js'
 import signIn from '../controllers/users/signin.js'
@@ -18,7 +16,6 @@ import validator from '../middleware/users/validator.js'
 import { createUser, userSignIn } from '../schema/users.js'
 
 const router = express.Router()
-
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {

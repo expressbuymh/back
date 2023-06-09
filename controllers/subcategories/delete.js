@@ -1,10 +1,14 @@
-import Subcategory from "../../models/Subcategory.js"
+
+import SubCategory from "../../models/SubCategory.js"
+
 
 
 
 const destroy = async (req, res, next) => {
   try {
-    const destroySubCategories = await Subcategory.findByIdAndDelete(req.params.id)
+
+    const destroySubCategories = await SubCategory.findByIdAndDelete(req.params.id)
+
     if(destroySubCategories){
       return res.status(200).json({
         success: true,

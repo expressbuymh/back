@@ -1,6 +1,5 @@
 import Product from "../models/Product.js";
 
-
 const productServices = {
     create: async function (body) {
         try {

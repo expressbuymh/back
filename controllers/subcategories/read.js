@@ -1,9 +1,12 @@
-import Subcategory from "../../models/Subcategory.js"
+
+import SubCategory from "../../models/SubCategory.js"
 
 
 const read = async (req, res, next) => {
   try {
-    const allSubcategories = await Subcategory.find()
+
+    const allSubcategories = await SubCategory.find()
+
     return res.status(200).json({
       success: true,
       allSubcategories
