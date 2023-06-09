@@ -137,6 +137,42 @@ const productServices = {
             }
         }
 
+    },
+    substract_stock: async function (products) {
+        let error = []
+        for (let product of products) {
+            let bd_product = await Product.findById(product.product_id)
+            if (bd_product) {
+                if (bd_product.stock - product.quantity >= 0) {
+                    bd_product.stock = bd_product.stock - product.quantity
+                } else {
+                    let newError = {
+                        path: bd_product._id,
+                        message: "no stock"
+                    }
+                    error.push(newError)
+                }
+
+            } else {
+                let newError = {
+                    path: product.product_id,
+                    message: "The product doesn't exists"
+                }
+                error.push(newError);
+            }
+        }
+        if (error.length > 0) {
+            return {
+                success: false,
+                error,
+                message: "some items has problems"
+            }
+        } else {
+            return {
+                success: true,
+                message: "Success"
+            }
+        }
     }
 }
 export default productServices
