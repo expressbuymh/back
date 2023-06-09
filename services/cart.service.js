@@ -102,13 +102,14 @@ const cartServices = {
     },
     delete_product: async function (cart_id, produc_id) {
         try {
-            let deleteproduct = await Cart.findById(cart_id)
-            let 
-            if (deleteproduct) {
+            let cart = await Cart.findById(cart_id)
+            if (cart) {
+                let product_delete = cart.products.pull(produc_id)
+                await cart.save()
                 return {
                     success: true,
                     status_code: 200,
-                    deleteproduct
+                    product_delete
                 }
             } else {
                 return {

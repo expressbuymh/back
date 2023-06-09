@@ -1,4 +1,4 @@
-import SubCategory from "../../models/SuCcategory.js"
+import SubCategory from "../../models/SubCategory.js"
 
 
 const read = async (req, res, next) => {
