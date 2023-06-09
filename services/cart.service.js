@@ -1,5 +1,6 @@
-import clearProduct from '../controllers/carts/clearProduct.js'
+
 import Cart from '../models/Cart.js'
+
 
 const cartServices = {
     create: async function (userId) {
@@ -28,11 +29,16 @@ const cartServices = {
     },
     getme_cart: async function (user_id) {
         try {
-            let getme = await Cart.find({ user_id: user_id })
+            let cart = await Cart.findOne({ user_id: user_id }).populate({
+                path: 'products',
+                populate: {
+                    path: 'product_id'
+                }
+            })
             return {
                 success: true,
                 status_code: 200,
-                getme
+                cart
             }
         } catch (error) {
             return {
@@ -44,8 +50,26 @@ const cartServices = {
                 }]
             }
         }
-
-
+    },
+    get_cart_order: async function (user_id) {
+        try {
+            let cart = await Cart.findOne({ user_id })
+            let products_unpopulate = cart.products
+            let cart_populate = await cart.populate({
+                path: 'products',
+                populate: {
+                    path: 'product_id'
+                }
+            })
+            let products_populate = cart_populate.products
+            let address_id = cart.address_id
+            return {
+                products_unpopulate,
+                products_populate,
+                address_id
+            }
+        } catch (error) {
+        }
     },
     add_product: async function (cart_id, product_id, quantity) {
         try {
@@ -127,8 +151,9 @@ const cartServices = {
             }
         }
     },
-    checkout_product: async function (cart_id) {
+    checkout: async function (cart_id) {
         try {
+            console.log(cart_id)
             let checkout = await Cart.findById(cart_id)
             if (checkout) {
                 this.clear_product(cart_id)
@@ -136,7 +161,7 @@ const cartServices = {
             return {
                 success: true,
                 status_code: 200,
-                checkout
+                cart : checkout
             }
         } catch (error) {
             return {
