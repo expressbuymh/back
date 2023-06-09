@@ -1,26 +1,12 @@
-import Department from "../../models/Department.js";
+import departmentService from "../../services/department.service.js"
 
 let update = async (req, res, next) => {
     try {
-        let department_update = await Department.findByIdAndUpdate(
-            {_id: req.params.id}, 
-            req.body, 
-            { new: true })
-        if (department_update) {
-            return res.status(200).json({
-                succes: true,
-                department_update,
-                message: "Department updated!!"
-            })
-        } else {
-            return res.status(404).json({
-                succes: false,
-                message: [{
-                    path: "exists",
-                    message: "Department doesn't exists"
-                }]
-            })
-        }
+        let response = await departmentService.update(req.params.id, req.body)
+        return res.status(response.status_code).json({
+            success: response.succes,
+            department: response.departmentUpdate
+        })
     } catch (error) {
         return res.status(500).json({
             succes: false,
