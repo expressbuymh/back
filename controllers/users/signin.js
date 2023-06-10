@@ -4,12 +4,12 @@ import cartServices from '../../services/cart.service.js'
 const signIn = async (req, res, next) => {
   try {
     const response = await usersServices.sign_in(req.body)
-    const cart = await cartServices.getme_cart(req.user.id)
+    const cart = await cartServices.getme_cart(response.user._id)
     return res.status(response.status_code).json({
       success: response.success,
       message: response.message,
       token: response.token,
-      signin: response.user,
+      user: response.user,
       cart: cart
 
 
