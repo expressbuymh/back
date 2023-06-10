@@ -28,7 +28,7 @@ router.get('/admins', (req, res, next) => res.status(200).json({
 }))
 
 router.post('/signin', validator(userSignIn), accountExistsSignIn, isVerified, passwordIsOk, signIn)
-router.post('/signup', validator(createUser), accountExistsSignUp, newUser)
+router.post('/signup', /* validator(createUser) */ accountExistsSignUp, newUser)
 router.post('/signout', passport.authenticate('jwt', { session: false }), signOut)
 router.post('/token', passport.authenticate('jwt', { session: false }), token)
 
