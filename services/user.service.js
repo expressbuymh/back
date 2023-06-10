@@ -106,8 +106,6 @@ const usersServices = {
     try {
       const token = jwt.sign({ id: user._id }, process.env.SECRET, { expiresIn: 60 * 60 * 24 })
       return {
-        success: true,
-        status_code: 200,
         token
       }
     } catch (error) {
