@@ -1,20 +1,18 @@
-import SubCategory from "../../models/SubCategory.js"
-
-
-
+import subcategoryServices from "../../services/subcategory.service.js"
 const create = async (req, res, next) => {
   try {
-    const newSubcategory = await SubCategory(req.body)
-    await newSubcategory.save()
-    return res.status(201).json({
-      success: true,
-      message: 'SubCategory Created!'
+    let response = await subcategoryServices.create(req.body)
+    return res.status(response.status_code).json({
+      succces: response.success,
+      message: response.message,
+      subcategory: response.subcategory
     })
+
   } catch (error) {
     return res.status(500).json({
-      message:[{
-        paht:'server',
-        message:'Error internal the server'
+      message: [{
+        paht: 'server',
+        message: 'Error internal the server'
       }]
     })
   }
