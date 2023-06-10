@@ -34,8 +34,6 @@ const cartServices = {
                 }
             })
             return {
-                success: true,
-                status_code: 200,
                 cart
             }
         } catch (error) {
