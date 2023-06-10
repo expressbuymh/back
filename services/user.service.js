@@ -1,20 +1,38 @@
 import User from '../models/User.js'
 import jwt from 'jsonwebtoken'
+import crypto from 'crypto'
+import bcryptjs from 'bcryptjs'
 
 const usersServices = {
-  sign_up: async function (email, password) {
+  sign_up: async function (body) {
+    body.password = bcryptjs.hashSync(body.password, 10)
+    const verify = body.verify_code = crypto.randomBytes(10).toString('hex')
+    body.is_online = false
+    body.role = 0
+    body.is_verified = true
+    console.log(body)
     try {
-      const newUser = new User({ email, password })
-      const user = await newUser.save()
-      const token = await this.jwt_sign(user)
-      return { token, user }
+      let sign_up = await User.create(body)
+      if (sign_up) {
+        return {
+          success: true,
+          status_code: 201,
+          sign_up,
+          verify
+        }
+      } else {
+        return {
+          success: false,
+          status_code: 404
+        }
+      }
     } catch (error) {
       return {
         success: false,
         status_code: 500,
         message: [{
-          path: 'create',
-          message: 'Error while creating a user'
+          path: 'internal',
+          message: 'Error internal server'
         }]
       }
     }
