@@ -8,7 +8,7 @@ const signIn = async (req, res, next) => {
     return res.status(response.status_code).json({
       success: response.success,
       message: response.message,
-      token: response.token,
+      token: response.token.token,
       user: response.user,
       cart: response_cart.cart
     })
