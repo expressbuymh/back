@@ -9,7 +9,7 @@ const token = async (req, res, next) => {
       success: response.success,
       message: response.message,
       user: response.user,
-      cart: cart
+      cart: cart.cart
 
     })
   } catch (error) {
