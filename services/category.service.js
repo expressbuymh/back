@@ -25,6 +25,7 @@ const categoryServices = {
     },
     read: async function(queries, pagination) {
         try {
+            let totalCount = await Category.find(queries).count()
             let all_categories = await Category
                         .find(queries)
                         .skip(pagination.page > 0 ? (pagination.page-1)*pagination.limit : 0)
@@ -32,9 +33,11 @@ const categoryServices = {
             return {
                 success: true,
                 status_code: 201,
+                totalCount,
                 all_categories
             }
         } catch (error) {
+            console.log(error)
             return {
                 success: false,
                 status_code: 500,
@@ -45,12 +48,14 @@ const categoryServices = {
             }
         }
     },
-    read_actives: async function() {
+    read_actives: async function(queries) {
         try {
-            let all_actives = await Category.find({active: true})
+            let totalCount = await Category.find(queries).count()
+            let all_actives = await Category.find(queries)
             return {
                 success: true,
                 status_code: 201,
+                totalCount,
                 all_actives
             }
         } catch (error) {
