@@ -1,35 +1,18 @@
-
-import SubCategory from "../../models/SubCategory.js"
-
-
-
+import subcategoryServices from "../../services/subcategory.service.js"
 
 const destroy = async (req, res, next) => {
   try {
-
-    const destroySubCategories = await SubCategory.findByIdAndDelete(req.params.id)
-
-    if(destroySubCategories){
-      return res.status(200).json({
-        success: true,
-        message: 'SubCategory Destroyed!',
-        destroySubCategories
-      })
-    }else{
-      return res.status(400).json({
-        success:false,
-        message:[{
-          path:'subcategories',
-          message:'The subcategories was not found with the provider data'
-        }]
-      })
-    }
-    
+    let response = await subcategoryServices.delete_subcategory(req.params.id, req.body)
+    return res.status(response.status_code).json({
+      success: response.success,
+      message: response.message,
+      subcategory: response.subcategory
+    })
   } catch (error) {
     return res.status(500).json({
-      message:[{
-        paht:'server',
-        message:'Error internal the server'
+      message: [{
+        paht: 'server',
+        message: 'Error internal the server'
       }]
     })
   }

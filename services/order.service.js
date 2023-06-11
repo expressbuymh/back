@@ -7,17 +7,14 @@ const orderServices = {
             body.products = products_unpopulate
             body.user_id = user_id
             body.n_order = await this.get_last_order() + 1
-            console.log(body.n_order)
             body.total_price = this.get_total_price(products_populate)
             let order = await Order.create(body)
-
             return {
                 success: true,
                 status_code: 201,
-                order
+                order,
             }
         } catch (error) {
-
             return {
                 success: false,
                 status_code: 500,
@@ -69,13 +66,13 @@ const orderServices = {
                 }
             }
         } catch (error) {
-            return{
+            return {
                 success: false,
-                    status_code: 500,
-                    message: [{
-                        path: "update",
-                        message: "an error ocurred while updating the order"
-                    }]
+                status_code: 500,
+                message: [{
+                    path: "update",
+                    message: "an error ocurred while updating the order"
+                }]
             }
         }
     },
@@ -99,13 +96,13 @@ const orderServices = {
                 }
             }
         } catch (error) {
-            return{
+            return {
                 success: false,
-                    status_code: 500,
-                    message: [{
-                        path: "update",
-                        message: "an error ocurred while updating the order"
-                    }]
+                status_code: 500,
+                message: [{
+                    path: "update",
+                    message: "an error ocurred while updating the order"
+                }]
             }
         }
     },
@@ -129,13 +126,13 @@ const orderServices = {
                 }
             }
         } catch (error) {
-            return{
+            return {
                 success: false,
-                    status_code: 500,
-                    message: [{
-                        path: "update",
-                        message: "an error ocurred while updating the order"
-                    }]
+                status_code: 500,
+                message: [{
+                    path: "update",
+                    message: "an error ocurred while updating the order"
+                }]
             }
         }
     },
@@ -159,19 +156,19 @@ const orderServices = {
                 }
             }
         } catch (error) {
-            return{
+            return {
                 success: false,
-                    status_code: 500,
-                    message: [{
-                        path: "update",
-                        message: "an error ocurred while updating the order"
-                    }]
+                status_code: 500,
+                message: [{
+                    path: "update",
+                    message: "an error ocurred while updating the order"
+                }]
             }
         }
     },
     get_me: async function (user_id) {
         try {
-            let orders = await Order.find({user_id: user_id})
+            let orders = await Order.find({ user_id: user_id })
             if (orders.length > 0) {
                 return {
                     success: true,
@@ -189,13 +186,13 @@ const orderServices = {
                 }
             }
         } catch (error) {
-            return{
+            return {
                 success: false,
-                    status_code: 500,
-                    message: [{
-                        path: "get",
-                        message: "an error ocurred while updating the order"
-                    }]
+                status_code: 500,
+                message: [{
+                    path: "get",
+                    message: "an error ocurred while updating the order"
+                }]
             }
         }
     },
@@ -219,13 +216,13 @@ const orderServices = {
                 }
             }
         } catch (error) {
-            return{
+            return {
                 success: false,
-                    status_code: 500,
-                    message: [{
-                        path: "get",
-                        message: "an error ocurred while updating the order"
-                    }]
+                status_code: 500,
+                message: [{
+                    path: "get",
+                    message: "an error ocurred while updating the order"
+                }]
             }
         }
     }
