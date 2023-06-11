@@ -70,7 +70,7 @@ const invoiceServices = {
             page.drawText('Item', { x: itemsX, y: itemsY, font: timesRomanFont, size: fontSize })
             page.drawText('Quantity', { x: itemsX + 100, y: itemsY, font: timesRomanFont, size: fontSize })
             page.drawText('Price', { x: itemsX + 200, y: itemsY, font: timesRomanFont, size: fontSize })
-/*             page.drawText('Discount', { x: itemsX + 300, y: itemsY, font: timesRomanFont, size: fontSize }) */
+            /*             page.drawText('Discount', { x: itemsX + 300, y: itemsY, font: timesRomanFont, size: fontSize }) */
             page.drawText('Linetotal', { x: itemsX + 400, y: itemsY, font: timesRomanFont, size: fontSize })
 
 
