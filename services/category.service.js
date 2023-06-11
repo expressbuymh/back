@@ -20,9 +20,6 @@ const categoryServices = {
             }
         }
     },
-    update: async function () {
-
-    },
     read: async function (queries, pagination) {
         try {
             let all_categories = await Category

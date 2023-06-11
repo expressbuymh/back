@@ -13,10 +13,22 @@ const schema = new Schema({
     type: Date,
     required: false
   },
+  total_price: {
+    type: Number,
+    required: true
+  },
+  items: {
+    type: Array,
+    required: false
+  },
   pdf_file: {
     type: String,
     required: false,
+  },
+  n_order: {
+    type: Number, required: false
   }
+
 })
 
 const collection = 'invoices'

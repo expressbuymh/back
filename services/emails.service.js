@@ -21,8 +21,24 @@ const emailServices = {
       }
     }
   },
-  send_invoice: function () {
-    let send_email = sendInvoice()
+  send_invoice: function (body, pdf) {
+    try {
+      let send_email = sendInvoice(body, { textButton: 'Download Invoice', messageText: 'Thank you very much for choosing us, here you have your invoice', pdfFilePath: pdf.invoice.pdf_file, pdf: 'Invoice' })
+      return {
+        success: true,
+        status_code: 200,
+        send_email
+      }
+    } catch (error) {
+      return {
+        success: false,
+        status_code: 500,
+        message: [{
+          path: 'sendemailuser',
+          message: 'Could not send the email, please try again later'
+        }]
+      }
+    }
   }
 
 }
