@@ -1,12 +1,12 @@
 import usersServices from '../../services/user.service.js'
 
 const signOut = async (req, res, next) => {
-  const { email } = req.user
   try {
-    await usersServices.sign_out(email)
-    return res.status(200).json({
-      success: true,
-      message: 'Logout successful'
+    let response = await usersServices.sign_out(req.user.email)
+    return res.status(response.status_code).json({
+      success: response.success,
+      message: response.message,
+      signout: response.signout
     })
   } catch (error) {
     return res.status(500).json({

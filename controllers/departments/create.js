@@ -1,17 +1,20 @@
-import Department from "../../models/Department.js";
+import departmentService from "../../services/department.service.js"
 
 let create = async (req, res, next) => {
     try {
-        let new_department = await Department(req.body)
-        // console.log(new_department);
-        await new_department.save()
-        return res.status(201).json({
-            succes: true,
-            message: 'Deparment Created!'
+        let response = await departmentService.create(req.body)
+        return res.status(response.status_code).json({
+            succes: response.success,
+            message: response.message,
+            department: response.department
         })
     } catch (error) {
-        return res.status(400).json({
-            error: error
+        return res.status(500).json({
+            succes: false,
+            message: [{
+                path: 'internal',
+                message: 'Internal server error'
+            }]
         })
     }
 }

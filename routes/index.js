@@ -9,16 +9,8 @@ import paymentRouter from './paymments.js'
 import orderRouter from './orders.js'
 import addressRouter from './address.js'
 import cartRouter from './carts.js'
+import menuRouter from './menu.js'
 
-
-
-const router = express.Router()
-
-
-/* GET home page. */
-router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Express' })
-})
 
 router.use('/auth', userRouter)
 router.use('/products', productsRouter)
@@ -30,4 +22,5 @@ router.use('/paymments', paymentRouter)
 router.use('/orders', orderRouter)
 router.use('/addresses', addressRouter)
 router.use('/carts', cartRouter)
+router.use('/menu', menuRouter)
 export default router
