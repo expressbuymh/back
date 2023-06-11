@@ -69,8 +69,9 @@ const cartServices = {
         } catch (error) {
         }
     },
-    add_product: async function (cart_id, product_id, quantity) {
+    add_product: async function (cart_id, body) {
         try {
+            const { product_id, quantity } = body
             let cart = await Cart.findById(cart_id)
             const existingProduct = cart.products.find(product => product.product_id.toString() === product_id)
             if (existingProduct) {
@@ -78,7 +79,7 @@ const cartServices = {
             } else {
                 cart.products.push({
                     product_id: product_id,
-                    quantity: quantity
+                    quantity: quantity,
                 })
             }
             cart.save()
