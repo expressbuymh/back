@@ -80,9 +80,6 @@ const cartServices = {
                 cart.products.push({
                     product_id: product_id,
                     quantity: quantity,
-                    price: price,
-                    description: description,
-                    name: name
                 })
             }
             cart.save()
