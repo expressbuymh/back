@@ -1,14 +1,11 @@
 import Order from "../models/Order.js";
 
 const orderServices = {
-    create: async function (body, user_id, products_unpopulate, products_populate, address_id, price, description, name) {
+    create: async function (body, user_id, products_unpopulate, products_populate, address_id) {
         try {
             body.address_id = address_id
             body.products = products_unpopulate
             body.user_id = user_id
-            body.price = price
-            body.description = description
-            body.name = name
             body.n_order = await this.get_last_order() + 1
             body.total_price = this.get_total_price(products_populate)
             let order = await Order.create(body)

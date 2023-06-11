@@ -71,7 +71,7 @@ const cartServices = {
     },
     add_product: async function (cart_id, body) {
         try {
-            const { product_id, quantity, price, description, name } = body
+            const { product_id, quantity } = body
             let cart = await Cart.findById(cart_id)
             const existingProduct = cart.products.find(product => product.product_id.toString() === product_id)
             if (existingProduct) {
