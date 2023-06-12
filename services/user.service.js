@@ -1,34 +1,54 @@
 import User from '../models/User.js'
 import jwt from 'jsonwebtoken'
+import crypto from 'crypto'
+import bcryptjs from 'bcryptjs'
 
 const usersServices = {
-  sign_up: async function (email, password) {
+  sign_up: async function (body) {
+    body.password = bcryptjs.hashSync(body.password, 10)
+    const verify = body.verify_code = crypto.randomBytes(10).toString('hex')
+    body.is_online = false
+    body.role = 0
+    body.is_verified = true
     try {
-      const newUser = new User({ email, password })
-      const user = await newUser.save()
-      const token = await this.jwt_sign(user)
-      return { token, user }
+      let sign_up = await User.create(body)
+      if (sign_up) {
+        console.log(sign_up._id)
+        return {
+          success: true,
+          status_code: 201,
+          sign_up,
+          verify
+        }
+      } else {
+        return {
+          success: false,
+          status_code: 404
+        }
+      }
     } catch (error) {
       return {
         success: false,
         status_code: 500,
         message: [{
-          path: 'create',
-          message: 'Error while creating a user'
+          path: 'internal',
+          message: 'Error internal server'
         }]
       }
     }
   },
 
-  sign_in: async function (email) {
+  sign_in: async function (body) {
     try {
-      const user = await User.findOneAndUpdate(
-        { email },
-        { is_online: true },
-        { new: true }
-      )
+      const { email } = body
+      const user = await User.findOneAndUpdate({ email }, { is_online: true }, { new: true })
       const token = await this.jwt_sign(user)
-      return { token, user }
+      return {
+        success: true,
+        status_code: 200,
+        token,
+        user
+      }
     } catch (error) {
       return {
         success: false,
@@ -43,11 +63,12 @@ const usersServices = {
 
   sign_out: async function (email) {
     try {
-      await User.findOneAndUpdate(
-        { email },
-        { is_online: false },
-        { new: true }
-      )
+      let signout = await User.findOneAndUpdate({ email }, { is_online: false }, { new: true })
+      return {
+        success: true,
+        status_code: 200,
+        signout
+      }
     } catch (error) {
       return {
         success: false,
@@ -63,7 +84,12 @@ const usersServices = {
   sign_in_token: async function (user) {
     try {
       const token = await this.jwt_sign({ user })
-      return { user, token }
+      return {
+        success: true,
+        status_code: 200,
+        user,
+        token
+      }
     } catch (error) {
       return {
         success: false,
@@ -78,12 +104,10 @@ const usersServices = {
 
   jwt_sign: async function (user) {
     try {
-      const token = jwt.sign(
-        { id: user._id },
-        process.env.SECRET,
-        { expiresIn: 60 * 60 * 24 }
-      )
-      return token
+      const token = jwt.sign({ id: user._id }, process.env.SECRET, { expiresIn: 60 * 60 * 24 })
+      return {
+        token
+      }
     } catch (error) {
       return {
         success: false,

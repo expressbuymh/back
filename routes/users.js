@@ -11,7 +11,7 @@ import accountExistsSignIn from '../middleware/users/accountSignIp.js'
 import isVerified from '../middleware/users/isVerified.js'
 import passwordIsOk from '../middleware/users/passIsOk.js'
 import passport from '../middleware/passport.js'
-import validator from '../middleware/users/validator.js'
+import validator from '../middleware/validator.js'
 // COLOCAR SCHEMAS
 import { createUser, userSignIn } from '../schema/users.js'
 

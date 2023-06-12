@@ -15,10 +15,10 @@ import { createCategory, updateCategory } from '../schema/categories.js'
 
 const router = Router()
 
-router.post('/',passport.authenticate('jwt', { session: false }),validator(createCategory),verify_role_admin, isVerified, categoryExistsByName, create)
+router.post('/',passport.authenticate('jwt', { session: false }),validator(schema),verify_role_admin, isVerified, categoryExistsByName, create)
 router.get('/admin',passport.authenticate('jwt', { session: false }),verify_role_admin, isVerified ,read)  //middle para verificar role
 router.get('/', read_actives)
-router.put('/:id',passport.authenticate('jwt', { session: false }),validator(updateCategory) ,verify_role_admin, update)
+router.put('/:id',passport.authenticate('jwt', { session: false }), verify_role_admin, update)
 router.delete('/:id',passport.authenticate('jwt', { session: false }),verify_role_admin, destroy)
 
 export default router
