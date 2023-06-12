@@ -1,30 +1,19 @@
-import SubCategory from "../../models/SubCategory.js"
+import subcategoryServices from "../../services/subcategory.service.js"
 
 const update = async (req, res, next) => {
   try {
-    const subCategoryUpdate = await SubCategory.findByIdAndUpdate(
-
-      req.params.id, req.body, { new: true })
-    if (subCategoryUpdate) {
-      return res.status(200).json({
-        succes: true,
-        subCategoryUpdate
-      })
-    } else {
-      return res.status(404).json({
-        succes: false,
-        message: [{
-          path: 'exists',
-          message: "The SubCategory doesn't exists"
-        }]
-      })
-    }
+    let response = await subcategoryServices.update(req.params.id, req.body)
+    return res.status(response.status_code).json({
+      success: response.success,
+      message: response.message,
+      subcategory: response.subcategoryUpdate
+    })
   } catch (error) {
     return res.status(500).json({
-      succes: false,
+      success: false,
       message: [{
         path: 'internal',
-        message: 'Internal server error'
+        message: 'Error internal the server'
       }]
     })
   }

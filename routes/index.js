@@ -1,5 +1,4 @@
-import express from 'express'
-const router = express.Router();
+import { Router } from 'express'
 import userRouter from './users.js'
 import productsRouter from './products.js'
 import invoicesRouter from './invoice.js'
@@ -10,13 +9,9 @@ import paymentRouter from './paymments.js'
 import orderRouter from './orders.js'
 import addressRouter from './address.js'
 import cartRouter from './carts.js'
+import menuRouter from './menu.js'
 
-
-
-/* GET home page. */
-router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Express' })
-})
+const router = Router()
 
 router.use('/auth', userRouter)
 router.use('/products', productsRouter)
@@ -28,4 +23,5 @@ router.use('/paymments', paymentRouter)
 router.use('/orders', orderRouter)
 router.use('/addresses', addressRouter)
 router.use('/carts', cartRouter)
+router.use('/menu', menuRouter)
 export default router
