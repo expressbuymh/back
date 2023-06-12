@@ -23,3 +23,4 @@ export const createInvoice = Joi.object({
         pdf_file: Joi.string().optional(),
         n_order: Joi.number().optional()
 })
+
