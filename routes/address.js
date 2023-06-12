@@ -13,7 +13,7 @@ const router = Router()
 
 router.post('/',passport.authenticate('jwt', { session: false }), validator(createAddress), isVerified, addressExists ,create)
 router.get('/me', passport.authenticate('jwt', { session: false }), get_me)
-router.put('/:id', passport.authenticate('jwt', { session: false }), validator(updateAddress), update)
+router.put('/:id', passport.authenticate('jwt', { session: false }), validator(updateAddress), isVerified, update)
 router.delete('/:id', validator(updateAddress), passport.authenticate('jwt', { session: false }), deleteAddress)
 
 
