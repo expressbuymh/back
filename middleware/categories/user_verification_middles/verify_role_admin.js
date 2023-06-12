@@ -5,7 +5,7 @@ const verify_role_admin = async(req,res,next) => {
     return res.status(401).json({
         success: false,
         message: [{
-            path: 'unauthorized ',
+            path: 'unauthorized',
             message: "You're not Authorized"
         }]
     })
