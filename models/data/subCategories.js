@@ -48,5 +48,35 @@ export const subCategories =
   active: true,
   category_id: 'Meats and Fish',
   name: 'Fish'
+},
+{
+  active: true,
+  category_id: 'Dairy',
+  name: 'Milk and yogurt'
+},
+{
+  active: true,
+  category_id: 'Dairy',
+  name: 'chesse'
+},
+{
+  active: true,
+  category_id: 'Products hygiene',
+  name: 'Intimate hygiene'
+},
+{
+  active: true,
+  category_id: 'Products hygiene',
+  name: 'Personal hygiene'
+},
+{
+  active: true,
+  category_id: 'Products hygiene',
+  name: 'Deodorant for men and women'
+},
+{
+  active: true,
+  category_id: 'Products cleaning',
+  name: 'General cleaning'
 }
 ]

@@ -5,9 +5,9 @@ import { departments } from './department.js'
 import { products } from './products.js'
 import { subCategories } from './subCategories.js'
 import { users } from './users.js'
-import Category from '../Categories.js'
+import Category from '../Category.js'
 import Department from '../Department.js'
-import Product from '../Products.js'
+import Product from '../Product.js'
 import SubCategory from '../subCategory.js'
 import User from '../User.js'
 
@@ -33,11 +33,11 @@ const newProduct = async (products) => {
   for (const product of products) {
     const department = await Department.findOne({ name: product.department_id })
     const category = await Category.findOne({ name: product.category_id })
-    const subCategory = await SubCategory.findOne({ name: product.subCategory_id })
+    const subCategory = await SubCategory.findOne({ name: product.subcategory_id })
     product.department_id = department._id
     product.category_id = category._id
     console.log(subCategory)
-    product.subCategory_id = subCategory._id
+    product.subcategory_id = subCategory._id
     await Product.create(product)
   }
 }
@@ -47,6 +47,7 @@ const data = async () => {
   await newUser(users)
   await newSubCategories(subCategories)
   await newProduct(products)
+  console.log('Done!')
 }
 
 data()

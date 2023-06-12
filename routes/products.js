@@ -13,6 +13,10 @@ import active from '../controllers/products/active.js'
 import discount from '../controllers/products/products_discount.js'
 import allDiscount from '../controllers/products/products_discount.js'
 import productsQuery from "../controllers/products/products_query.js"
+//middleware
+import existsProduct from '../middleware/products/exists.js'
+import isAdmin from '../middleware/products/isAdmin.js'
+import is_verified from '../middleware/products/isVerified.js'
 
 const router = Router()
 
@@ -30,8 +34,8 @@ router.delete('/:id', passport.authenticate('jwt', { session: false }), destroy)
 router.get('/discount', allDiscount)
 router.get('/', productsQuery)
 router.put('/active/:id',passport.authenticate('jwt', {session: false}), active)
-router.post('/', passport.authenticate('jwt', {session: false}), validator(create_schema), create)
-router.put('/:id', passport.authenticate('jwt', {session: false}), validator(update_schema), update)
-router.delete('/:id',passport.authenticate('jwt', {session: false}),  destroy)
+router.post('/', passport.authenticate('jwt', {session: false}), validator(create_schema),isAdmin,is_verified,existsProduct, create)
+router.put('/:id', passport.authenticate('jwt', {session: false}), validator(update_schema),isAdmin, update)
+router.delete('/:id',passport.authenticate('jwt', {session: false}),isAdmin, destroy)
 router.get('/:id',getOne)
 export default router
