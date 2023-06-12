@@ -191,10 +191,43 @@ const productServices = {
                 success: false,
                 status_code: 500,
                 message: [{
-                    path: "update",
-                    message: "An error ocurred while updating product"
+                    path: "get_discounts",
+                    message: "An error ocurred while discounts product"
                 }]
             }
+        }
+    },
+
+    pagination_products: async function(pagination,filter){
+        try {
+           
+            const totalProductsCount = await Product.countDocuments(filter) //
+
+                const totalPages = Math.ceil(totalProductsCount / pagination.limit) //
+
+               
+            const products = await Product.find(filter).skip(pagination.page > 0 ? (pagination.page-1)*pagination.limit : 0)
+            .limit(pagination.limit > 0 ? pagination.limit : 0)
+            .populate('discount_id') 
+            // .populate('category_id') 
+            .populate('department_id')
+            .populate('subcategory_id')
+
+            
+            return {
+                success: true,
+                status_code: 200,
+                products: products,
+                pagination: { //
+                    page: pagination.page,
+                    limit: pagination.limit,
+                    totalPages,
+                    totalProducts: totalProductsCount
+                  }
+            }
+        } catch (error) {
+            console.log(error)
+
         }
     }
 }

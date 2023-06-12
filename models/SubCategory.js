@@ -1,6 +1,7 @@
 import { Schema, model, Types } from 'mongoose'
 
 const schema = new Schema({
+  active: {type: Boolean, required: true},
   category_id: {
     type: Types.ObjectId,
     ref: 'categories',
