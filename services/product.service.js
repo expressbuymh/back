@@ -197,6 +197,7 @@ const productServices = {
             }
         }
     },
+
     pagination_products: async function(pagination,filter){
         try {
            
@@ -211,6 +212,7 @@ const productServices = {
             // .populate('category_id') 
             .populate('department_id')
             .populate('subcategory_id')
+
             
             return {
                 success: true,
@@ -225,6 +227,7 @@ const productServices = {
             }
         } catch (error) {
             console.log(error)
+
         }
     }
 }

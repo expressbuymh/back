@@ -7,6 +7,7 @@ const  productsQuery = async(req, res) =>{
             limit: 10,
             page:1
         }
+
        let filter ={
         //   price: { $gt : 2 , $lt : 45000}
        }
@@ -49,12 +50,14 @@ const  productsQuery = async(req, res) =>{
        
        
         let response = await productServices.pagination_products(pagination, filter)
+
         
             return res.status(response.status_code).json({
                 success: response.succes,
                 message: response.message,
                 products: response.products,
                 pagination: response.pagination //
+
             })
     } catch (error) {
         console.log(error);
