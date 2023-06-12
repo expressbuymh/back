@@ -1,4 +1,4 @@
-import express from 'express'
+import { Router } from 'express'
 import userRouter from './users.js'
 import productsRouter from './products.js'
 import invoicesRouter from './invoice.js'
@@ -11,6 +11,7 @@ import addressRouter from './address.js'
 import cartRouter from './carts.js'
 import menuRouter from './menu.js'
 
+const router = Router()
 
 router.use('/auth', userRouter)
 router.use('/products', productsRouter)
