@@ -1,5 +1,4 @@
 import express from 'express'
-const router = express.Router();
 import userRouter from './users.js'
 import productsRouter from './products.js'
 import invoicesRouter from './invoice.js'

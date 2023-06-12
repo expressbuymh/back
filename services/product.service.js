@@ -197,21 +197,37 @@ const productServices = {
             }
         }
     },
-    pagination_products: async function(pagination){
+
+    pagination_products: async function(pagination,filter){
         try {
-            const productsPagination = await Product.find().skip(pagination.page > 0 ? (pagination.page-1)*pagination.limit : 0)
+           
+            const totalProductsCount = await Product.countDocuments(filter) //
+
+                const totalPages = Math.ceil(totalProductsCount / pagination.limit) //
+
+               
+            const products = await Product.find(filter).skip(pagination.page > 0 ? (pagination.page-1)*pagination.limit : 0)
             .limit(pagination.limit > 0 ? pagination.limit : 0)
+            .populate('discount_id') 
+            // .populate('category_id') 
+            .populate('department_id')
+            .populate('subcategory_id')
+
             
             return {
                 success: true,
                 status_code: 200,
-                productsPagination
+                products: products,
+                pagination: { //
+                    page: pagination.page,
+                    limit: pagination.limit,
+                    totalPages,
+                    totalProducts: totalProductsCount
+                  }
             }
         } catch (error) {
-            return {
-                succes: false,
-                status_code: 500,
-            }
+            console.log(error)
+
         }
     }
 }
