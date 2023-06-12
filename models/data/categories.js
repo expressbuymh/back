@@ -18,24 +18,21 @@ export const categories = [
     active: true,
     department_id: 'Market',
     name: 'Meats and Fish'
+  },
+  {
+    active: false,
+    department_id: 'Market',
+    name: 'Dairy'
+  },
+  {
+    active: true,
+    department_id: 'Market',
+     name: 'Products hygiene'
+  },
+  {
+    active: false,
+    department_id: 'Market',
+    name: 'Products cleaning'
   }
-
-  // {
-  //   name: 'Dairy'
-  // },
-  // {
-  //   name: 'Products hygiene'
-  // },
-  // {
-  //   name: 'Products cleaning'
-  // },
-  // {
-  //   name: 'Bakery'
-  // },
-  // {
-  //   name: 'Candies'
-  // },
-  // {
-  //   name: 'Snacks'
-  // } 
 ]
+
