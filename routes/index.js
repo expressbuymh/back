@@ -1,4 +1,4 @@
-import express, { Router } from 'express'
+import { Router } from 'express'
 import userRouter from './users.js'
 import productsRouter from './products.js'
 import invoicesRouter from './invoice.js'
