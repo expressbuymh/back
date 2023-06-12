@@ -7,14 +7,19 @@ import changeActive from '../controllers/subcategories/changeActive.js'
 import destroy from '../controllers/subcategories/delete.js'
 import activeIsTrue from '../controllers/subcategories/activeIsTrue.js'
 import passport from '../middleware/passport.js'
+import validator from '../middleware/validator.js'
+import verify_role_admin from '../middleware/categories/user_verification_middles/verify_role_admin.js'
+import subcategoryExists from '../middleware/subCategories/subCategoryExists.js'
+import accountHasBeenVerified from '../middleware/users/isVerified.js'
+import { createSubCategory, updateSubCategory, changeProperty } from '../schema/subCategories.js'
 const router = Router()
 
-router.post('/', passport.authenticate('jwt', { session: false }), create)
+router.post('/', passport.authenticate('jwt', { session: false }),validator(createSubCategory),verify_role_admin, subcategoryExists, accountHasBeenVerified ,create)
 router.get('/', read)
 router.get('/active', activeIsTrue)
-router.put('/property/:id', passport.authenticate('jwt', { session: false }), changeActive)
-router.get('/admin', passport.authenticate('jwt', { session: false }), getAllSubcategoryes)
-router.put('/:id', passport.authenticate('jwt', { session: false }), update)
-router.delete('/:id', passport.authenticate('jwt', { session: false }), destroy)
+router.put('/property/:id', passport.authenticate('jwt', { session: false }), validator(changeProperty),verify_role_admin, accountHasBeenVerified ,changeActive)
+router.get('/admin', passport.authenticate('jwt', { session: false }),verify_role_admin ,getAllSubcategoryes)
+router.put('/:id', passport.authenticate('jwt', { session: false }), validator(updateSubCategory),verify_role_admin ,update)
+router.delete('/:id', passport.authenticate('jwt', { session: false }),verify_role_admin ,destroy)
 
 export default router
