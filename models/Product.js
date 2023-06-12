@@ -29,14 +29,9 @@ const schema = new Schema({
     type: Number,
     required: true
   },
-  sales: {
-    type: Number,
-    required: true
-  },
-  discount_id: {
-    type: Types.ObjectId,
-    ref: 'discounts',
-    required: true
+  discount: {
+    active: { type: Boolean, required: true },
+    percent: { type: Number }
   },
   department_id: {
     type: Types.ObjectId,
