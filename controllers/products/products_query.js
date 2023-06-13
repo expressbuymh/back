@@ -53,7 +53,7 @@ const  productsQuery = async(req, res) =>{
 
         
             return res.status(response.status_code).json({
-                success: response.succes,
+                success: response.success,
                 message: response.message,
                 products: response.products,
                 pagination: response.pagination //
