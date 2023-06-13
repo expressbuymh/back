@@ -2,7 +2,7 @@ import User from '../../models/User.js'
 
 async function accountExistsSignIn (req, res, next) {
   const user = await User.findOne({ email: req.body.email })
-  if (!user) {
+  if (user) {
     req.user = {
       id: user._id,
       email: user.email,
@@ -17,7 +17,7 @@ async function accountExistsSignIn (req, res, next) {
     success: false,
     message: [
       {
-        path: 'Credential',
+        path: 'este',
         message: 'Wrong credential'
       }
     ]
