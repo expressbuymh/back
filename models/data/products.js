@@ -177,7 +177,7 @@ export const products = [
     category_id: 'Food pantry',
     stock: 1,
     department_id: 'Market',
-    discount: { active: false, percent: 1 },
+   /*  discount: { active: false, percent: 1 }, */
     subCategory_id: 'Grain'
   }, {
     title: 'Oil Vegetal FRESCAMPO 3000 ml',
@@ -189,7 +189,7 @@ export const products = [
     category_id: 'Food pantry',
     stock: 1,
     department_id: 'Market',
-    discount: { active: false, percent: 1 },
+   /*  discount: { active: false, percent: 1 }, */
     subCategory_id: 'Oils and vinegars'
   }, {
     title: 'Oil Extra Virgin Olive FRESCAMPO 500 ml',
