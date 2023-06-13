@@ -87,7 +87,26 @@ const categoryServices = {
                 }]
             }
         }
-    }
+    },
+    get_all_categoryes: async function () {
+        try {
+            let subcategoryes = await Category.find()
+            return {
+                success: true,
+                status_code: 200,
+                subcategoryes
+            }
+        } catch (error) {
+            return {
+                success: false,
+                status_code: 500,
+                message: [{
+                    path: 'categoryall',
+                    message: 'There was an error while read-all the category'
+                }]
+            }
+        }
+    },
 }
 
 export default categoryServices

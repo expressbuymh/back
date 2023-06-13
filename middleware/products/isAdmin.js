@@ -1,6 +1,7 @@
-const verify_role_admin = async(req,res,next) => {
+const isAdmin = async(req,res,next) => {
     if(req.user.role === 2) {
         return next()
+        
     }
     return res.status(401).json({
         success: false,
@@ -11,4 +12,4 @@ const verify_role_admin = async(req,res,next) => {
     })
 }
 
-export default verify_role_admin
+export default isAdmin
