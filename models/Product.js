@@ -37,7 +37,6 @@ const schema = new Schema({
     type: Types.ObjectId,
     ref: 'discounts',
     required: true
-
   },
   department_id: {
     type: Types.ObjectId,

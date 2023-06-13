@@ -2,10 +2,11 @@ import addressService from '../../services/address.service.js'
 
 const addressExists = async (req, res, next) => {
     try {
+
         let address = await addressService.adress_exist(req.body.name, req.user._id)
         
         if (address) {
-            console.log(address);
+            
             return res.status(400).json({
                 success: false,
                 message: [{
