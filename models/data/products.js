@@ -192,9 +192,6 @@ export const products = [
     stock: 1,
     department_id: 'Market',
 
-    discount: { active: false, percent: 1 },
-    subcategory_id: 'Grain'
-
   }, {
     active: true,
     name: 'Oil Vegetal FRESCAMPO 3000 ml',
@@ -206,9 +203,6 @@ export const products = [
     category_id: 'Food pantry',
     stock: 1,
     department_id: 'Market',
-
-    discount: { active: false, percent: 1 },
-    subcategory_id: 'Oils and vinegars'
 
   }, {
     active: true,
