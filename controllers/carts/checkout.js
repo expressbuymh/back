@@ -9,6 +9,7 @@ let checkoutProduct = async (req, res, next) => {
         let { products_unpopulate, products_populate, address_id } = await cartServices.get_cart_order(req.user.id)
         let { order } = await orderServices.create(req.body, req.user.id, products_unpopulate, products_populate, address_id)
         let response = await cartServices.checkout(req.params.id)
+        console.log(order)
         let invoice = await invoiceServices.create_invoice(order, req.user, products_populate)
         let sendInvoice = emailServices.send_invoice(req.user, invoice)
 
@@ -19,6 +20,7 @@ let checkoutProduct = async (req, res, next) => {
             cart: response.cart
         })
     } catch (error) {
+        console.log(error)
         return res.status(500).json({
             succes: false,
             message: [{
