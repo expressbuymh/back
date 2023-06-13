@@ -10,6 +10,7 @@ import orderRouter from './orders.js'
 import addressRouter from './address.js'
 import cartRouter from './carts.js'
 import menuRouter from './menu.js'
+import statusRouter from './status.js'
 
 const router = Router()
 
@@ -24,4 +25,6 @@ router.use('/orders', orderRouter)
 router.use('/addresses', addressRouter)
 router.use('/carts', cartRouter)
 router.use('/menu', menuRouter)
+router.use('/status', statusRouter)
 export default router
+
