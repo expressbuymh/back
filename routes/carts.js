@@ -6,6 +6,7 @@ import clearProduct from "../controllers/carts/clearProduct.js";
 import getmeCart from "../controllers/carts/getme_cart.js";
 import checkoutProduct from "../controllers/carts/checkout.js";
 import deleteProduct from "../controllers/carts/deleteProduct.js";
+import cartAddressUpdate from "../controllers/carts/cartAddressUpdate.js";
 
 const router = Router()
 
@@ -16,6 +17,6 @@ router.post('/deleteproduct/:id', passport.authenticate('jwt', { session: false 
 router.put('/clear/:id', passport.authenticate('jwt', { session: false }), clearProduct)
 router.get('/', passport.authenticate('jwt', { session: false }), getmeCart)
 router.put('/checkout/:id', passport.authenticate('jwt', { session: false }), checkoutProduct)
-
+router.put('/address/:id', passport.authenticate('jwt', { session: false }), cartAddressUpdate)
 
 export default router

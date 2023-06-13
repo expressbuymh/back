@@ -10,7 +10,7 @@ import orderRouter from './orders.js'
 import addressRouter from './address.js'
 import cartRouter from './carts.js'
 import menuRouter from './menu.js'
-import statusRouter from './status.js'
+import webhookRouter from './webhooks.js'
 
 const router = Router()
 
@@ -25,6 +25,6 @@ router.use('/orders', orderRouter)
 router.use('/addresses', addressRouter)
 router.use('/carts', cartRouter)
 router.use('/menu', menuRouter)
-router.use('/status', statusRouter)
+router.use('/webhook', webhookRouter)
 export default router
 

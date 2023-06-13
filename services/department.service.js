@@ -69,8 +69,63 @@ const departmentService = {
                 }]
             }
         }
+    },
+    department_exist: async function (departments) {
+        try {
+            let department = await Department.find(departments)
+            if (department) {
+                return {
+                    success: true,
+                    status_code: 200,
+                    department
+                }
+            } else {
+                return {
+                    success: false,
+                    status_code: 400,
+                    message: 'The department does not exist'
+                }
+            }
+        } catch (error) {
+            return {
+                success: false,
+                status_code: 500,
+                message: [{
+                    path: 'Error',
+                    message: 'Error internal server'
+                }]
+            }
+        }
 
-
+    },
+    department_active: async function (active) {
+        try {
+            let deparment = await Department.findByIdAndUpdate(id, { active: active }, { new: true })
+            if (deparment) {
+                await deparment.save()
+                return {
+                    success: true,
+                    status_code: 200,
+                    deparment
+                }
+            } else {
+                return {
+                    success: false,
+                    status_code: 400,
+                    message: 'No department were found with the data provided.'
+                }
+            }
+        } catch (error) {
+            return {
+                success: false,
+                status_code: 500,
+                message: [{
+                    path: 'Error',
+                    message: 'Error internal server'
+                }]
+            }
+        }
     }
+
 }
 export default departmentService
