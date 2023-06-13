@@ -183,6 +183,25 @@ const cartServices = {
             }
         }
     },
+    update_address: async function (cart_id, address_id) {
+        try {
+            let updateAddress = await Cart.findByIdAndUpdate(cart_id, address_id, { new: true })
+            return {
+                success: true,
+                status_code: 200,
+                updateAddress
+            }
+        } catch (error) {
+            return {
+                success: false,
+                status_code: 500,
+                message: [{
+                    path: 'Error',
+                    message: 'Error internal server'
+                }]
+            }
+        }
+    },
     checkout: async function (cart_id) {
         try {
             console.log(cart_id)

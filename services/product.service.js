@@ -213,7 +213,6 @@ const productServices = {
                 .populate('department_id')
                 .populate('subcategory_id')
 
-
             return {
                 success: true,
                 status_code: 200,

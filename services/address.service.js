@@ -68,12 +68,12 @@ const addressServices = {
                 addressDelete
             }
         } catch (error) {
-            return{
+            return {
                 success: false,
-                status_code:500,
-                message:[{
-                    path:'delete',
-                    message:'There was an error while delete the address'
+                status_code: 500,
+                message: [{
+                    path: 'delete',
+                    message: 'There was an error while delete the address'
                 }]
             }
         }
