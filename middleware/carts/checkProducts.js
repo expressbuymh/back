@@ -4,7 +4,7 @@ const checkProducts = async(req, res,next)=>{
     try {
         let response = await cartServices.get_by_id(req.params.id)
 
-        if(!response.cart.products.length <= 0){
+        if(!response.cart.products.length >= 0){
 
             return res.status(400).json({
                 succcess: false,
