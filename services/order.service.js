@@ -203,7 +203,12 @@ const orderServices = {
             const totalPages = Math.ceil(totalOrders / pagination.limit)
            
             let orders = await Order.find(filter).skip(pagination.page > 0 ? (pagination.page - 1) * pagination.limit : 0)
-                .limit(pagination.limit > 0 ? pagination.limit : 0).populate('user_id').populate('address_id')
+                .limit(pagination.limit > 0 ? pagination.limit : 0).populate('user_id').populate('address_id').populate({
+                    path: 'products',
+                    populate: {
+                        path: 'product_id'
+                    }
+                })
             if (orders.length > 0) {
                 return {
                     success: true,
