@@ -17,7 +17,7 @@ async function accountExistsSignIn (req, res, next) {
     success: false,
     message: [
       {
-        path: 'este',
+        path: 'credential',
         message: 'Wrong credential'
       }
     ]

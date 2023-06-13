@@ -179,7 +179,7 @@ const productServices = {
     get_discounts: async function () {
         try {
 
-            let products = await Product.find({ active: true }).populate({ path: "discount_id", match: { active: true } }).limit(10)
+            let products = await Product.find({ active: true }).populate({ path: "discount_id", macth: { active: true } }).limit(10)
 
             return {
                 success: true,
