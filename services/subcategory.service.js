@@ -160,6 +160,33 @@ const subcategoryServices = {
                 }]
             }
         }
+    },
+    subcategories_name: async function (subcategory) {
+        try {
+            let subcategory_name = await SubCategory.find(subcategory)
+            if (subcategory) {
+                return {
+                    success: true,
+                    status_code: 200,
+                    subcategory_name
+                }
+            } else {
+                return {
+                    succes: false,
+                    status_code: 400,
+                    message: 'No categories were found with the data provided.'
+                }
+            }
+        } catch (error) {
+            return {
+                success: false,
+                status_code: 500,
+                message: [{
+                    path: 'subcategoryactive',
+                    message: 'There are no subcategories with the property in active'
+                }]
+            }
+        }
     }
 }
 export default subcategoryServices
