@@ -10,13 +10,12 @@ const invoicesDirectory = join(__dirname, '..', 'invoices');
 
 const invoiceServices = {
     create_invoice: async function (body, user, products) {
-
         body = {
             ...body,
-            payment_method: body.payment_method || "debito",
-            payment_date: body.payment_date || new Date(1994, 0, 1),
-            n_order: body.n_order || null,
-            total_price: body.total_price || null
+            payment_method: body?.payment_method || "debito",
+            payment_date: body?.payment_date || new Date(1994, 0, 1),
+            n_order: body?.n_order || null,
+            total_price: body?.total_price || null
         }
         try {
             const invoice = await Invoice.create(body)

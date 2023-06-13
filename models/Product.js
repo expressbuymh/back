@@ -29,11 +29,14 @@ const schema = new Schema({
     type: Number,
     required: true
   },
-  discount_id: {
-  type: Types.ObjectId,
-  ref: 'discounts',
-  required: true
-
+  sales: {
+    type: Number,
+    required: true
+  },
+    discount_id: {
+    type: Types.ObjectId,
+    ref: 'discounts',
+    required: true
   },
   department_id: {
     type: Types.ObjectId,

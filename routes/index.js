@@ -27,3 +27,4 @@ router.use('/carts', cartRouter)
 router.use('/menu', menuRouter)
 router.use('/status', statusRouter)
 export default router
+
