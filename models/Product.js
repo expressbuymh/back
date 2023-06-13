@@ -33,7 +33,7 @@ const schema = new Schema({
     type: Number,
     required: true
   },
-  discount_id: {
+            discount_id: {
     type: Types.ObjectId,
     ref: 'discounts',
     required: true
