@@ -209,7 +209,7 @@ const productServices = {
             const products = await Product.find(filter).skip(pagination.page > 0 ? (pagination.page-1)*pagination.limit : 0)
             .limit(pagination.limit > 0 ? pagination.limit : 0)
             .populate('discount_id') 
-            // .populate('category_id') 
+            .populate('category_id') 
             .populate('department_id')
             .populate('subcategory_id')
 

@@ -1,9 +1,9 @@
 import { Router } from "express";
-import read from "../controllers/states/read.js";
+
 const router = Router()
 
 
-router.get('/', read)
+router.get('/', )
 
 
 export default router

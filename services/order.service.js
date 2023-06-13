@@ -196,14 +196,30 @@ const orderServices = {
             }
         }
     },
-    get_all: async function (user_id) {
+    get_all: async function (pagination, filter) {
+
         try {
-            let orders = await Order.find()
+            const totalOrders = await Order.countDocuments(filter)
+            const totalPages = Math.ceil(totalOrders / pagination.limit)
+           
+            let orders = await Order.find(filter).skip(pagination.page > 0 ? (pagination.page - 1) * pagination.limit : 0)
+                .limit(pagination.limit > 0 ? pagination.limit : 0).populate('user_id').populate('address_id').populate({
+                    path: 'products',
+                    populate: {
+                        path: 'product_id'
+                    }
+                })
             if (orders.length > 0) {
                 return {
                     success: true,
                     status_code: 200,
-                    orders
+                    orders,
+                    pagination: {
+                        page: pagination.page,
+                        limit: pagination.limit,
+                        totalPages,
+                        totalOrders: totalOrders
+                    }
                 }
             } else {
                 return {
@@ -216,6 +232,7 @@ const orderServices = {
                 }
             }
         } catch (error) {
+            console.log(error)
             return {
                 success: false,
                 status_code: 500,
