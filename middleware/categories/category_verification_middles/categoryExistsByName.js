@@ -1,18 +1,28 @@
-import Category from "../../../models/Category.js";
+import categoryServices from "../../../services/category.service.js"
 
-const categoryExistsByName = async(req,res,next) => {
-    const category = await Category.findOne({name: req.body.name})
-    if(category) {
-        return res.status(400).json({
-            success: false,
-            message: [{
-                path: 'categoryExists Middle',
-                message: `The categoty with the name "${category.name}" already exist`
-            }]
+
+
+const categoryExistsByName = async (req, res, next) => {
+    try {
+        let response = categoryServices.categoryExists({ name: req.body.name })
+
+        if (response) {
+            return res.status(400).json({
+                success: false,
+                message: [{
+                    path: 'categoryExists',
+                    message: 'The category alredy exists'
+                }]
+            })
+        }
+        next()
+    } catch (error) {
+        return res.status(500).json({
+            path: 'Error',
+            message: 'Error internal server'
         })
     }
-    return next()
-   
+
 }
 
 export default categoryExistsByName

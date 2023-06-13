@@ -77,6 +77,22 @@ const addressServices = {
                 }]
             }
         }
+    },
+    adress_exist: async function(name,user_id){
+        try {
+            let address = await Address.findOne({name,user_id })
+            return  address
+               
+        } catch (error) {
+            return {
+                success: false,
+                status_code: 500,
+                message: [{
+                    path: 'read',
+                    message: 'There was an error while read the address'
+                }]
+            }
+        }
     }
 }
 export default addressServices
