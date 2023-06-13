@@ -85,13 +85,13 @@ const categoryServices = {
             }
         }
     },
-    get_all_categoryes: async function () {
+    get_all_categories: async function () {
         try {
-            let subcategoryes = await Category.find()
+            let categories = await Category.find()
             return {
                 success: true,
                 status_code: 200,
-                subcategoryes
+                categories
             }
         } catch (error) {
             return {

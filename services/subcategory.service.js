@@ -66,13 +66,13 @@ const subcategoryServices = {
             }
         }
     },
-    get_all_subcategoryes: async function () {
+    get_all_subcategories: async function () {
         try {
-            let subcategoryes = await SubCategory.find()
+            let subcategories = await SubCategory.find()
             return {
                 success: true,
                 status_code: 200,
-                subcategoryes
+                subcategories
             }
         } catch (error) {
             return {
