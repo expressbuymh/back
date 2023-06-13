@@ -14,7 +14,7 @@ import discount from '../controllers/products/products_discount.js'
 import allDiscount from '../controllers/products/products_discount.js'
 import productsQuery from "../controllers/products/products_query.js"
 //middleware
-import existsProduct from '../middleware/products/exists.js'
+import existsProduct from '../middleware/products/existsProduct.js'
 import isAdmin from '../middleware/products/isAdmin.js'
 import is_verified from '../middleware/products/isVerified.js'
 

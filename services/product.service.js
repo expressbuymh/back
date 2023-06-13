@@ -176,11 +176,11 @@ const productServices = {
             }
         }
     },
-    get_discounts: async function (){
+    get_discounts: async function () {
         try {
 
-            let products = await Product.find({active:true}).populate({path:"discount_id", macth: {active:true}}).limit(10)
-            
+            let products = await Product.find({ active: true }).populate({ path: "discount_id", macth: { active: true } }).limit(10)
+
             return {
                 success: true,
                 status_code: 200,
@@ -198,22 +198,22 @@ const productServices = {
         }
     },
 
-    pagination_products: async function(pagination,filter){
+    pagination_products: async function (pagination, filter) {
         try {
-           
+
             const totalProductsCount = await Product.countDocuments(filter) //
 
-                const totalPages = Math.ceil(totalProductsCount / pagination.limit) //
+            const totalPages = Math.ceil(totalProductsCount / pagination.limit) //
 
-               
-            const products = await Product.find(filter).skip(pagination.page > 0 ? (pagination.page-1)*pagination.limit : 0)
-            .limit(pagination.limit > 0 ? pagination.limit : 0)
-            .populate('discount_id') 
-            .populate('category_id') 
-            .populate('department_id')
-            .populate('subcategory_id')
 
-            
+            const products = await Product.find(filter).skip(pagination.page > 0 ? (pagination.page - 1) * pagination.limit : 0)
+                .limit(pagination.limit > 0 ? pagination.limit : 0)
+                .populate('discount_id')
+                .populate('category_id')
+                .populate('department_id')
+                .populate('subcategory_id')
+
+
             return {
                 success: true,
                 status_code: 200,
@@ -223,10 +223,33 @@ const productServices = {
                     limit: pagination.limit,
                     totalPages,
                     totalProducts: totalProductsCount
-                  }
+                }
             }
         } catch (error) {
             console.log(error)
+
+        }
+    },
+    existsProducts: async function (body) {
+        try {
+            const { name } = body
+            const existsProductName = await Product.findOne(name)
+
+
+            return {
+                success: true,
+                status_code: 200,
+                existsProductName
+            }
+        } catch (error) {
+            return {
+                success: false,
+                status_code: 500,
+                message: [{
+                    path: 'existsproducts',
+                    message: 'There was an error while checking  the products name'
+                }]
+            }
 
         }
     }

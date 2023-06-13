@@ -107,6 +107,27 @@ const categoryServices = {
             }
         }
     },
+    categoryExists: async function(body) {
+        try {
+            const{name}=body
+            const category = await Category.findOne(body)
+            return{
+                success: true,
+                status_code: 200,
+                category
+            }
+        } catch (error) {
+            return {
+                success: false,
+                status_code: 500,
+                message:[{
+                    path:'categoryexists',
+                    message: 'There was an error while checking the category name'
+                }]
+            }
+            
+        }
+    }
 }
 
 export default categoryServices
