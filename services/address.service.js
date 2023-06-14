@@ -78,11 +78,11 @@ const addressServices = {
             }
         }
     },
-    adress_exist: async function(name,user_id){
+    adress_exist: async function (name, user_id) {
         try {
-            let address = await Address.findOne({name,user_id })
-            return  address
-               
+            let address = await Address.findOne({ name, user_id })
+            return address
+
         } catch (error) {
             return {
                 success: false,
