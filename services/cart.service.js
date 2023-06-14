@@ -35,7 +35,6 @@ const cartServices = {
                         path: 'category_id subcategory_id department_id'
                     }
                 }
-
             }).populate("address_id", "-user_id -createdAt -updatedAt -__v").select('-__v -updatedAt -createdAt -user_id')
             return {
                 success: true,
