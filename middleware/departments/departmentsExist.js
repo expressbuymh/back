@@ -2,7 +2,7 @@ import departmentService from "../../services/department.service.js";
 
 let deparmentsExist = async (req, res, next) => {
     try {
-        let response = await departmentService.department_exist(req.body)
+        let response = await departmentService.department_exist(req.body.name)
         if (response.department) {
             return res.status(400).json({
                 success: false,
