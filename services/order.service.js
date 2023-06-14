@@ -49,6 +49,8 @@ const orderServices = {
     paid: async function (id) {
         try {
             let order = await Order.findByIdAndUpdate(id, { status: "paid" }, { new: true })
+            order.payment_date = Date.now()
+            order.save()
             if (order) {
                 return {
                     success: true,
@@ -79,6 +81,8 @@ const orderServices = {
     shipped: async function (id) {
         try {
             let order = await Order.findByIdAndUpdate(id, { status: "shipped" }, { new: true })
+            order.shipped_date = Date.now()
+            order.save()
             if (order) {
                 return {
                     success: true,
@@ -109,6 +113,8 @@ const orderServices = {
     delivered: async function (id) {
         try {
             let order = await Order.findByIdAndUpdate(id, { status: "delivered" }, { new: true })
+            order.delivered_date = Date.now()
+            order.save()
             if (order) {
                 return {
                     success: true,
@@ -139,6 +145,8 @@ const orderServices = {
     cancel: async function (id) {
         try {
             let order = await Order.findByIdAndUpdate(id, { status: "cancel" }, { new: true })
+            order.cancel_date = Date.now()
+            order.save()
             if (order) {
                 return {
                     success: true,
@@ -168,7 +176,15 @@ const orderServices = {
     },
     get_me: async function (user_id) {
         try {
-            let orders = await Order.find({ user_id: user_id })
+            let orders = await Order.find({ user_id: user_id }).populate({
+                path: 'products',
+                populate: {
+                    path: 'product_id',
+                    populate: {
+                        path: 'category_id subcategory_id department_id'
+                    }
+                }
+            }).populate("address_id user_id")
             if (orders.length > 0) {
                 return {
                     success: true,
@@ -186,6 +202,7 @@ const orderServices = {
                 }
             }
         } catch (error) {
+            console.log(error)
             return {
                 success: false,
                 status_code: 500,
@@ -201,12 +218,15 @@ const orderServices = {
         try {
             const totalOrders = await Order.countDocuments(filter)
             const totalPages = Math.ceil(totalOrders / pagination.limit)
-           
+
             let orders = await Order.find(filter).skip(pagination.page > 0 ? (pagination.page - 1) * pagination.limit : 0)
                 .limit(pagination.limit > 0 ? pagination.limit : 0).populate('user_id').populate('address_id').populate({
                     path: 'products',
                     populate: {
-                        path: 'product_id'
+                        path: 'product_id',
+                        populate: {
+                            path: 'category_id subcategory_id department_id'
+                        }
                     }
                 })
             if (orders.length > 0) {
@@ -215,7 +235,7 @@ const orderServices = {
                     status_code: 200,
                     orders,
                     pagination: {
-                        page: pagination.page,
+                        page: parseInt(pagination.page) ,
                         limit: pagination.limit,
                         totalPages,
                         totalOrders: totalOrders
