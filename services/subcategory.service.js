@@ -23,7 +23,7 @@ const subcategoryServices = {
     },
     read: async function (body) {
         try {
-            let subcategory = await SubCategory.find(body)
+            let subcategory = await SubCategory.find({active:true})
             return {
                 success: true,
                 status_code: 200,
