@@ -179,12 +179,12 @@ const productServices = {
     get_discounts: async function () {
         try {
 
-            let products = await Product.find({ active: true }).populate({ path: "discount_id", macth: { active: true } }).limit(10)
-
+            let products = await Product.find({ active: true }).populate("category_id subcategory_id department_id discount_id")
+            const filterProducts = products.filter((item) => item.discount_id.active);
             return {
                 success: true,
                 status_code: 200,
-                products
+                products: filterProducts
             }
         } catch (error) {
             return {
