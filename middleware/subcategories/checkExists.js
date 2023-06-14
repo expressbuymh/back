@@ -2,11 +2,14 @@ import subcategoryServices from "../../services/subcategory.service.js";
 
 const subcategoryExists = async (req, res, next) => {
     try {
-        let response = await subcategoryServices.subcategories_name(req.body)
+        let response = await subcategoryServices.subcategories_name(req.body.name)
         if (response.subcategory_name) {
             return res.status(400).json({
                 success: false,
-                message: 'The subcategory is already exists'
+                message: [{
+                    path: "exist",
+                    message: "the subcategory already exist"
+                    }]
             })
         }
         next()

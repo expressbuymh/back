@@ -3,6 +3,7 @@ import SubCategory from '../models/SubCategory.js'
 const subcategoryServices = {
     create: async function (body) {
         try {
+            body.active=true
             let subcategory = await SubCategory.create(body)
             return {
                 success: true,
@@ -161,10 +162,10 @@ const subcategoryServices = {
             }
         }
     },
-    subcategories_name: async function (subcategory) {
+    subcategories_name: async function (name) {
         try {
-            let subcategory_name = await SubCategory.find(subcategory)
-            if (subcategory) {
+            let subcategory_name = await SubCategory.findOne({name})
+            if (subcategory_name) {
                 return {
                     success: true,
                     status_code: 200,
