@@ -78,7 +78,7 @@ const productServices = {
     },
     get_one: async function (id) {
         try {
-            let product = await Product.findById(id)
+            let product = await Product.findById(id).populate('department_id category_id subcategory_id discount_id')
             if (product) {
                 return {
                     success: true,
@@ -179,12 +179,12 @@ const productServices = {
     get_discounts: async function () {
         try {
 
-            let products = await Product.find({ active: true }).populate({ path: "discount_id", macth: { active: true } }).limit(10)
-
+            let products = await Product.find({ active: true }).populate("category_id subcategory_id department_id discount_id")
+            const filterProducts = products.filter((item) => item.discount_id.active);
             return {
                 success: true,
                 status_code: 200,
-                products
+                products: filterProducts
             }
         } catch (error) {
             return {
@@ -218,7 +218,7 @@ const productServices = {
                 status_code: 200,
                 products: products,
                 pagination: { //
-                    page: pagination.page,
+                    page: parseInt(pagination.page),
                     limit: pagination.limit,
                     totalPages,
                     totalProducts: totalProductsCount
@@ -232,8 +232,7 @@ const productServices = {
     existsProducts: async function (body) {
         try {
             const { name } = body
-            const existsProductName = await Product.findOne(name)
-
+            const existsProductName = await Product.findOne({name})
 
             return {
                 success: true,

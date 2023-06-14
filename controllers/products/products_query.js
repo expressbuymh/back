@@ -20,8 +20,8 @@ const  productsQuery = async(req, res) =>{
         const nameRegex = new RegExp(trimmedName, "gi") // modificamos la expresión regular para que sea global (g) e insensible a mayúsculas y minúsculas (i)
         filter.name = nameRegex
        }
-       if(req.query.subCategory_id){
-            filter.subCategory_id = req.query.subCategory_id
+       if(req.query.subcategory_id){
+            filter.subcategory_id = req.query.subcategory_id
        }
        if(req.query.department_id){
             filter.department_id = req.query.department_id

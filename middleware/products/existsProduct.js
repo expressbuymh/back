@@ -3,8 +3,7 @@ import productServices from "../../services/product.service.js"
 async function existsProduct(req, res, next) {
     try {
         const response = await productServices.existsProducts(req.body)
-        
-        if (response) {
+        if (response.existsProductName) {
             return res.status(400).json({
                 success: false,
                 message: [{
