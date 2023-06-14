@@ -41,7 +41,7 @@ const usersServices = {
   sign_in: async function (body) {
     try {
       const { email } = body
-      const user = await User.findOneAndUpdate({ email }, { is_online: true }, { new: true })
+      const user = await User.findOneAndUpdate({ email }, { is_online: true }, { new: true }).select("-password -__v -verify_code -is_online -is_verified -createdAt -updatedAt")
       const token = await this.jwt_sign(user)
       return {
         success: true,
@@ -117,6 +117,14 @@ const usersServices = {
           message: 'Error no token'
         }]
       }
+    }
+  },
+  acount_exist: async function(email){
+    try {
+      let user = await User.findOne({email})
+      return user;
+    } catch (error) {
+      throw new Error(error)
     }
   }
 }

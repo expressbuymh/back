@@ -32,7 +32,7 @@ const cartServices = {
                 populate: {
                     path: 'product_id'
                 }
-            })
+            }).populate("address_id", "-user_id -createdAt -updatedAt -__v").select('-__v -updatedAt -createdAt -user_id')
             return {
                 success: true,
                 status_code: 200,
