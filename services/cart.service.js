@@ -30,8 +30,12 @@ const cartServices = {
             let cart = await Cart.findOne({ user_id: user_id }).populate({
                 path: 'products',
                 populate: {
-                    path: 'product_id'
+                    path: 'product_id',
+                    populate: {
+                        path: 'category_id subcategory_id department_id'
+                    }
                 }
+
             }).populate("address_id", "-user_id -createdAt -updatedAt -__v").select('-__v -updatedAt -createdAt -user_id')
             return {
                 success: true,

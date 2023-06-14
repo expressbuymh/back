@@ -1,13 +1,14 @@
 import User from '../../models/User.js'
+import usersServices from '../../services/user.service.js'
 
 async function accountExistsSignUp (req, res, next) {
-  const user = await User.findOne({ email: req.body.email })
+  const user = await usersServices.acount_exist(req.body.email)
   if (user) {
     return res.status(400).json({
       success: false,
       message: [
         {
-          path: 'userExist',
+          path: 'exist',
           message: 'The user already exist'
         }
       ]
