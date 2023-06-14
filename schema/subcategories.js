@@ -12,7 +12,6 @@ export const createSubCategory = Joi.object({
             'string.empty': 'The name cannot be empty',
             'any.required': 'The name is required'
         }),
-    active: Joi.boolean().required(),
     category_id: Joi.objectId().required()
 }
 )
