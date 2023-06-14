@@ -4,9 +4,9 @@ import categoryServices from "../../../services/category.service.js"
 
 const categoryExistsByName = async (req, res, next) => {
     try {
-        let response = categoryServices.categoryExists({ name: req.body.name })
+        let response = await categoryServices.categoryExists(req.body)
 
-        if (response) {
+        if (response.category) {
             return res.status(400).json({
                 success: false,
                 message: [{

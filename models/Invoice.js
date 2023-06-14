@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose'
+import { Schema, model, Types } from 'mongoose'
 
 const schema = new Schema({
   payment_date: {
@@ -26,9 +26,10 @@ const schema = new Schema({
     required: false,
   },
   n_order: {
-    type: Number, required: false
+    type: Types.ObjectId,
+    ref: 'orders',
+    required: true
   }
-
 })
 
 const collection = 'invoices'
