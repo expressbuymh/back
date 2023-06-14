@@ -70,9 +70,9 @@ const departmentService = {
             }
         }
     },
-    department_exist: async function (departments) {
+    department_exist: async function (name) {
         try {
-            let department = await Department.find(departments)
+            let department = await Department.findOne({name})
             if (department) {
                 return {
                     success: true,
