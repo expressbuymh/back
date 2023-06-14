@@ -46,6 +46,22 @@ const schema = new Schema({
     type: Types.ObjectId,
     ref: "invoices",
     required: false
+  },
+  payment_date: {
+    type: Date,
+    required: false
+  },
+  shipped_date: {
+    type: Date,
+    required: false
+  },
+  delivered_date: {
+    type: Date,
+    required: false
+  },
+  cancel_date: {
+    type: Date,
+    required: false
   }
 }, {
   timestamps: true
