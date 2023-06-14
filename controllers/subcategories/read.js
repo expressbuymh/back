@@ -2,11 +2,11 @@ import subcategoryServices from "../../services/subcategory.service.js"
 
 const read = async (req, res, next) => {
   try {
-    let response = await subcategoryServices.read(req.body)
+    let response = await subcategoryServices.read()
     return res.status(response.status_code).json({
       success: response.success,
       message: response.message,
-      subcategory: response.subcategory
+      subcategories: response.subcategory
     })
   } catch (error) {
     return res.status(500).json({

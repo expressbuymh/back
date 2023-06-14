@@ -5,7 +5,6 @@ import getAllSubcategoryes from '../controllers/subcategories/getAllSubCategorye
 import update from '../controllers/subcategories/update.js'
 import changeActive from '../controllers/subcategories/changeActive.js'
 import destroy from '../controllers/subcategories/delete.js'
-import activeIsTrue from '../controllers/subcategories/activeIsTrue.js'
 import passport from '../middleware/passport.js'
 import subcategoryExists from '../middleware/subcategories/checkExists.js'
 import isAdmin from '../middleware/products/isAdmin.js'
@@ -16,7 +15,6 @@ const router = Router()
 
 router.post('/', validator(createSubCategory), passport.authenticate('jwt', { session: false }), subcategoryExists, isAdmin, create)
 router.get('/', read)
-router.get('/active', activeIsTrue)
 router.put('/property/:id', passport.authenticate('jwt', { session: false }), isAdmin, changeActive)
 router.get('/admin', passport.authenticate('jwt', { session: false }), isAdmin, getAllSubcategoryes)
 router.put('/:id', validator(updateSubCategory), passport.authenticate('jwt', { session: false }), isAdmin, update)

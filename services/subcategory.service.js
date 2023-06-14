@@ -20,9 +20,10 @@ const subcategoryServices = {
             }
         }
     },
-    read: async function (body) {
+    read: async function () {
         try {
-            let subcategory = await SubCategory.find(body)
+            let subcategory = await SubCategory.find({active:true})
+            console.log(subcategory)
             return {
                 success: true,
                 status_code: 200,
@@ -161,22 +162,13 @@ const subcategoryServices = {
             }
         }
     },
-    subcategories_name: async function (subcategory) {
+    subcategories_name: async function (name) {
         try {
-            let subcategory_name = await SubCategory.find(subcategory)
-            if (subcategory) {
-                return {
-                    success: true,
-                    status_code: 200,
-                    subcategory_name
-                }
-            } else {
-                return {
-                    succes: false,
-                    status_code: 400,
-                    message: 'No categories were found with the data provided.'
-                }
-            }
+            let subcategory_name = await SubCategory.findOne({name})
+            console.log(subcategory_name);
+           return subcategory_name
+               
+            
         } catch (error) {
             return {
                 success: false,
