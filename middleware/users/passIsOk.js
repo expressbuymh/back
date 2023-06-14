@@ -9,8 +9,8 @@ function passwordIsOk (req, res, next) {
   return res.status(400).json({
     succes: false,
     message: [{
-      path: 'Credential',
-      message: 'Wrong credential'
+      path: 'credential',
+      message: 'Wrong credentials'
     }]
   })
 }
