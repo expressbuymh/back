@@ -6,7 +6,7 @@ let success = async (req, res, next) => {
     try {
         let response = await stateService.state_create(req.body, req.params.id)
         if (response.success) {
-            await orderService.paid(req.params.id)
+            await orderService.paid(req.body.external_reference)
             return res.status(200).json({
                 success: true, //esta es la respuesta del webhook hacia mercadopago
                 success: response.state_webhook
