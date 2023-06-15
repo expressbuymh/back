@@ -4,7 +4,7 @@ import passport from "../middleware/passport.js"
 const router = Router()
 
 
-router.post('/notification/:id', passport.authenticate('jwt', { session: false }), notification)
+router.post('/notification', notification)
 
 
 export default router
