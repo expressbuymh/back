@@ -12,7 +12,7 @@ const router = Router()
 
 
 //cambia la orden a paid
-router.put('/paid/:id', passport.authenticate('jwt',{session: false}), statusPaid)
+router.put('/paid/:id', statusPaid)
 router.put('/shipped/:id', passport.authenticate('jwt',{session: false}), statusShipped)
 router.put('/delivered/:id', passport.authenticate('jwt',{session: false}), statusDelivered)
 router.put('/cancel/:id', passport.authenticate('jwt',{session: false}), statusCancel)
