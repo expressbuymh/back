@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www.js",
+    "start": "node ./bin/www.js",
     "dev": "nodemon ./bin/dev",
     "data": "node ./models/data/data.js"
   },
