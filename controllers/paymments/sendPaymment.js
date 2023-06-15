@@ -3,7 +3,7 @@ import mercadopago from 'mercadopago'
 const sendPaymment = (req, res, next) => {
     try {
         const preference = {
-            external_reference: req.body._id,
+            external_reference: req.body.order_id,
             items: [req.body],
             //el link es este "init_point": "https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=102965140-f8a87415-333a-4de0-bfeb-7b464d752da7"//
             back_urls: {
