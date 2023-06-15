@@ -10,12 +10,15 @@ const invoicesDirectory = join(__dirname, '..', 'invoices');
 
 const invoiceServices = {
     create_invoice: async function (body, user, products) {
+
         body = {
             ...body,
             payment_method: body?.payment_method || "debito",
-            payment_date: body?.payment_date || new Date(1994, 0, 1),
-            n_order: body?.n_order || null,
-            total_price: body?.total_price || null
+            payment_date: body?.createdAt,
+            total_price: body?.total_price || null,
+            user_id: user._id,
+            items: products?.product_id
+
         }
         try {
             const invoice = await Invoice.create(body)
@@ -107,6 +110,7 @@ const invoiceServices = {
             const filePath = join(invoicesDirectory, `${invoice._id}.pdf`)
             fs.writeFileSync(filePath, pdfBytes)
             invoice.pdf_file = filePath
+            invoice.pdf_data = Buffer.from(pdfBytes)
             await invoice.save()
 
             return {
@@ -125,6 +129,19 @@ const invoiceServices = {
                 }]
             };
         }
+    },
+    getme_invoice: async function (user_id) {
+        try {
+            let invoices = await Invoice.find({ user_id })
+            return {
+                success: true,
+                status_code: 200,
+                invoices
+            }
+        } catch (error) {
+            console.log(error);
+        }
+
     }
 };
 

@@ -25,11 +25,15 @@ const schema = new Schema({
     type: String,
     required: false,
   },
-  n_order: {
+  pdf_data: {
+    type: Buffer,  // Campo de tipo Buffer para almacenar el contenido binario del PDF
+    required: false
+  },
+  user_id: {
     type: Types.ObjectId,
-    ref: 'orders',
+    ref: 'users',
     required: true
-  }
+  },
 })
 
 const collection = 'invoices'

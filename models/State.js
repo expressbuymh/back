@@ -1,14 +1,19 @@
-import { Schema, model } from 'mongoose'
+import { Schema, model, Types } from 'mongoose'
 
 const schema = new Schema({
-    name: {
+    type: {
         type: String,
         required: true
     },
-    code: [{
+    code_id: {
         type: Number,
         required: true,
-    }]
+    },
+    n_order: {
+        type: Types.ObjectId,
+        ref: 'orders',
+        required: true
+    }
 })
 
 const collection = 'status'
